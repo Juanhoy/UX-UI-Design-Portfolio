@@ -169,10 +169,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Audio Hover Effects ---
     const homeNavLinks = document.querySelectorAll('.home-nav .nav-link');
     const sounds = [
-        new Audio('Chord/sound1.mp3'),
-        new Audio('Chord/sound2.mp3'),
-        new Audio('Chord/sound3.mp3'),
-        new Audio('Chord/sound4.mp3')
+        new Audio('Chord/sound1.wav'),
+        new Audio('Chord/sound2.wav'),
+        new Audio('Chord/sound3.wav'),
+        new Audio('Chord/sound4.wav')
     ];
     
     // Preload sounds for better response time
