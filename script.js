@@ -57,51 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Timeline Interaction Logic ---
-    const timelineData = {
-        'empathy': {
-            title: 'Empathy',
-            methodologies: 'Stakeholder Briefing, User Research, Deep-Dive Interviews, User Personas, Empathy Mapping, Content Requirement, WCAG Compliance.',
-            skills: 'Information Synthesis, Insight Extraction, Strategic Alignment, Active Listening.',
-            software: 'Notion x Claude, FigJam, Evernote, Otter.ai (Transcription), Office 365, Azure Dev Ops, MS Teams.'
-        },
-        'use-cases': {
-            title: 'Use Cases',
-            methodologies: 'User Journey Mapping, Contextual Inquiry, Scenario Building.',
-            skills: 'Analytical Thinking, Process Mapping, Scenario Design.',
-            software: 'FigJam, Miro, Whimsical.'
-        },
-        'concepts': {
-            title: 'Concepts',
-            methodologies: 'Crazy 8s, Storyboarding, Wireframing, Information Architecture.',
-            skills: 'Ideation, Spatial Reasoning, Rapid Sketching.',
-            software: 'Figma, Balsamiq, Pen & Paper.'
-        },
-        'ui-design': {
-            title: 'UI Design',
-            methodologies: 'Atomic Design, Design Systems integration, Visual Hierarchy, Typography.',
-            skills: 'Visual Design, Component Architecture, Color Theory.',
-            software: 'Figma, Google Stitch, Adobe Illustrator.'
-        },
-        'prototype': {
-            title: 'Prototype',
-            methodologies: 'Interactive Mockups, Micro-interactions, Motion Design.',
-            skills: 'Interaction Design, State Management, Animation.',
-            software: 'Figma Prototyping, Principle, Propie.'
-        },
-        'test-design': {
-            title: 'Test Design',
-            methodologies: 'A/B Testing, Usability Testing scripts, Heuristic Evaluation.',
-            skills: 'Observation, Unbiased Moderation, Data Analysis.',
-            software: 'Maze, Useberry, Google Forms.'
-        },
-        'dev-handover': {
-            title: 'Dev Handover',
-            methodologies: 'Asset Exporting, Design tokens, Code-compatible layout, Specification Docs.',
-            skills: 'Communication, Basic Frontend knowledge, CSS/HTML understanding.',
-            software: 'Zeplin, Figma Inspect, Github.'
-        }
-    };
-
     const timelineItems = document.querySelectorAll('.timeline-item');
     const cols = document.querySelectorAll('.detail-col p'); // 0: Methodologies, 1: Skills, 2: Software
     const stepTitleOuter = document.querySelector('.active-step-title');
@@ -115,14 +70,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Get data step
             const stepKey = item.getAttribute('data-step');
-            const data = timelineData[stepKey];
+            
+            // Set dynamic keys based on step so applyTranslations hits them automatically later
+            cols[0].setAttribute('data-i18n', `tl_${stepKey}_methods`);
+            cols[1].setAttribute('data-i18n', `tl_${stepKey}_skills`);
+            cols[2].setAttribute('data-i18n', `tl_${stepKey}_soft`);
+            let titleKey = `step_${stepKey.replace('-', '')}`;
+            if (stepKey === 'test-design') titleKey = 'step_test';
+            if (stepKey === 'dev-handover') titleKey = 'step_dev';
+            stepTitleOuter.setAttribute('data-i18n', titleKey);
 
-            if (data) {
-                // Update text with a small fade effect (optional, skipped for brevity, keeping simple DOM update)
-                cols[0].textContent = data.methodologies;
-                cols[1].textContent = data.skills;
-                cols[2].textContent = data.software;
-                stepTitleOuter.textContent = data.title;
+            // Re-apply immediately for the new active item
+            const currentLang = document.getElementById('currentLang').textContent;
+            if (window.translations && window.translations[currentLang]) {
+                const strings = window.translations[currentLang];
+                cols[0].innerHTML = strings[`tl_${stepKey}_methods`] || '';
+                cols[1].innerHTML = strings[`tl_${stepKey}_skills`] || '';
+                cols[2].innerHTML = strings[`tl_${stepKey}_soft`] || '';
+                stepTitleOuter.innerHTML = strings[titleKey] || '';
             }
         });
     });
