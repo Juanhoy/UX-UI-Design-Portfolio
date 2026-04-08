@@ -218,8 +218,9 @@ document.addEventListener('DOMContentLoaded', () => {
         skillsChart = new Chart(ctx, config);
     }
 
-    // Initial chart load
+    // Initial load
     initChart('ENG');
+    applyTranslations('ENG');
 
     function applyTranslations(lang) {
         if (!window.translations || !window.translations[lang]) return;
