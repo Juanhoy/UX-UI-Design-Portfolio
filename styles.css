@@ -113,6 +113,7 @@ p {
 }
 .nav-link:hover, .nav-link.active {
     opacity: 1;
+    transform: translateY(-2px);
 }
 
 .header-right-container {
@@ -140,7 +141,7 @@ p {
 
 .page-section {
     min-height: 100vh;
-    padding: 20px 4rem 1rem 4rem;
+    padding: 125px 4rem; /* 125px top/bottom = 250px between contents */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -270,6 +271,12 @@ p {
     max-width: 1400px;
     margin: 0 auto;
     box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.6s ease;
+}
+
+.glass-container:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.06);
 }
 
 .section-header {
@@ -336,6 +343,13 @@ p {
     border-radius: 20px;
     font-size: 0.75rem;
     color: var(--text-main);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: default;
+}
+.pill:hover {
+    transform: scale(1.1);
+    background: var(--text-main);
+    color: #fff;
 }
 
 /* Work Experience */
@@ -346,6 +360,13 @@ p {
 }
 .work-item {
     margin-bottom: 0px;
+    transition: transform 0.3s ease;
+    padding: 0.5rem;
+    border-radius: 12px;
+}
+.work-item:hover {
+    transform: translateX(8px);
+    background: rgba(0,0,0,0.02);
 }
 .work-role {
     font-size: 0.95rem;
@@ -730,6 +751,9 @@ p {
     transform: translateY(-4px) scale(1.02);
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
+.contact-btn:active {
+    transform: translateY(-2px) scale(0.98);
+}
 
 /* Helper Spacing */
 .section-header-spacing {
@@ -749,5 +773,33 @@ p {
 .anim-delay-2 { animation-delay: 0.2s; }
 .anim-delay-3 { animation-delay: 0.3s; }
 
-/* Mobile-specific responsive rules live in mobile.css */
+/* Reveal Animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger Effects */
+.stagger-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.reveal.active .stagger-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-item {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.timeline-item:hover .dot {
+    transform: scale(1.5);
+    background: var(--accent-color, #000);
+}
 

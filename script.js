@@ -98,6 +98,33 @@ document.addEventListener('DOMContentLoaded', () => {
         sectionObserver.observe(section);
     });
 
+    // --- Reveal on Scroll Logic ---
+    const revealObserverOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                
+                // Handle staggered items if present
+                const staggers = entry.target.querySelectorAll('.stagger-item');
+                staggers.forEach((item, index) => {
+                    item.style.transitionDelay = `${index * 0.1}s`;
+                });
+                
+                // Once revealed, we can stop observing this specific element
+                // revealObserver.unobserve(entry.target);
+            }
+        });
+    }, revealObserverOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => {
+        revealObserver.observe(el);
+    });
+
     // --- Timeline Interaction Logic ---
     const timelineItems = document.querySelectorAll('.timeline-item');
     const cols = document.querySelectorAll('.detail-col p'); // 0: Methodologies, 1: Skills, 2: Software
