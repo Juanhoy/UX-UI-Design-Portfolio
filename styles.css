@@ -262,7 +262,7 @@ p {
 
 /* Glassmorphism Containers */
 #contact {
-    min-height: 70vh;
+    min-height: calc(70vh + 150px);
 }
 .glass-container {
     background: var(--glass-bg);
