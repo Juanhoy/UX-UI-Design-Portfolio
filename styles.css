@@ -140,7 +140,7 @@ p {
 }
 
 .page-section {
-    min-height: 100vh;
+    /* removed min-height: 100vh; to allow uniform spacing */
     padding: 50px 4rem 75px 4rem; /* Reduced by 50%: 50px top + 75px bottom = 125px gap */
     display: flex;
     flex-direction: column;
