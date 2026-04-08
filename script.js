@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const topNav = document.getElementById('topNav');
     const headerProfile = document.getElementById('headerProfile');
     const siteType = document.getElementById('siteType');
+    const mainHeader = document.getElementById('mainHeader');
 
     const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -85,10 +86,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (topNav) topNav.classList.add('hidden');
                     if (headerProfile) headerProfile.classList.add('hidden');
                     if (siteType) siteType.classList.remove('hidden');
+                    if (mainHeader) mainHeader.classList.add('at-home');
                 } else {
                     if (topNav) topNav.classList.remove('hidden');
                     if (headerProfile) headerProfile.classList.remove('hidden');
                     if (siteType) siteType.classList.add('hidden');
+                    if (mainHeader) mainHeader.classList.remove('at-home');
                 }
             }
         });

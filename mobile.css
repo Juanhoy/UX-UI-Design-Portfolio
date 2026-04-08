@@ -122,7 +122,13 @@ body.menu-open {
         justify-content: space-between;
         gap: 0.5rem;
         z-index: 200;
-        /* background + backdrop-filter already set in styles.css */
+        transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    .main-header.at-home {
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
     }
 
     .header-left {
@@ -135,9 +141,9 @@ body.menu-open {
     .site-type { display: none !important; }
     #siteType  { display: none !important; }
 
-    /* Force profile visible regardless of JS .hidden toggle */
+    /* Only show profile when not at the top (controlled by JS .hidden) */
     #headerProfile {
-        display: flex !important;
+        display: flex;
         align-items: center;
         gap: 0.5rem;
     }
