@@ -261,6 +261,9 @@ p {
 }
 
 /* Glassmorphism Containers */
+#contact {
+    min-height: 70vh;
+}
 .glass-container {
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
