@@ -1,43 +1,129 @@
 /*
  * ================================================================
  *  mobile.css — Complete Mobile Responsive Stylesheet
- *  ALL rules inside max-width media queries.
- *  Desktop styles in styles.css are NEVER modified.
+ *  All rules inside max-width breakpoints only.
+ *  Desktop (styles.css) is never touched.
  * ================================================================
  */
 
-/* ─── UNIVERSAL MOBILE SAFETY ───────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════
+   BURGER BUTTON  — hidden on desktop, shown on mobile
+   ═══════════════════════════════════════════════════════════════ */
+.burger-btn {
+    display: none;           /* hidden on desktop */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+    z-index: 201;
+}
+.burger-btn span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--text-main);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+}
+/* Animate to X when open */
+.burger-btn.open span:nth-child(1) { transform: translate(0, 8px) rotate(45deg); }
+.burger-btn.open span:nth-child(2) { opacity: 0; }
+.burger-btn.open span:nth-child(3) { transform: translate(0, -8px) rotate(-45deg); }
+
+/* ═══════════════════════════════════════════════════════════════
+   MOBILE NAV OVERLAY  — full screen slide-down menu
+   ═══════════════════════════════════════════════════════════════ */
+.mobile-nav-overlay {
+    display: none;           /* hidden on desktop */
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(247, 247, 247, 0.98);
+    backdrop-filter: blur(16px);
+    z-index: 150;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+.mobile-nav-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+}
+.mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+.mobile-nav-link {
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 2rem;
+    font-weight: 400;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+.mobile-nav-link:hover { opacity: 1; }
+
+.mobile-nav-lang {
+    display: flex;
+    gap: 1.5rem;
+}
+.mob-lang-btn {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+.mob-lang-btn:hover { opacity: 1; }
+
+/* Prevent body scroll when menu is open */
+body.menu-open {
+    overflow: hidden;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   MOBILE (≤768px)
+   ═══════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
 
-    /* Hard overflow guard — nothing can escape the viewport */
-    *,
-    *::before,
-    *::after {
-        max-width: 100%;
-        box-sizing: border-box;
-    }
+    /* ─ Global ────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { overflow-x: hidden; width: 100%; }
+    img { max-width: 100%; height: auto; display: block; }
 
-    html, body {
-        overflow-x: hidden;
-        width: 100%;
-    }
+    /* Show burger button on mobile */
+    .burger-btn { display: flex; }
 
-    img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-    }
+    /* Show mobile overlay (hidden by default, opened via JS) */
+    .mobile-nav-overlay { display: flex; }
 
-    /* ════ HEADER ════════════════════════════════════════════ */
+    /* ─ HEADER ────────────────────────────────── */
     .main-header {
-        padding: 0.75rem 1rem;
+        padding: 0.85rem 1.25rem;
         flex-direction: row;
         flex-wrap: nowrap;
         align-items: center;
         justify-content: space-between;
         gap: 0.5rem;
         background: rgba(247, 247, 247, 0.95);
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(12px);
+        z-index: 200;
     }
 
     .header-left {
@@ -46,45 +132,40 @@
         overflow: hidden;
     }
 
-    /* Hide long site-type text on mobile, show profile instead */
-    .site-type {
-        display: none;
-    }
+    /* On mobile: hide the long site-type text and always show profile */
+    .site-type { display: none !important; }
+    #siteType  { display: none !important; }
 
-    /* Show header profile by default on mobile (overrides JS .hidden) */
-    #headerProfile.hidden {
-        display: flex !important;
-    }
-
+    /* Force profile visible regardless of JS .hidden toggle */
     #headerProfile {
-        display: flex;
+        display: flex !important;
         align-items: center;
         gap: 0.5rem;
     }
 
     #headerProfile h2 {
         font-size: 0.85rem;
+        font-weight: 500;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: 140px;
+        max-width: 150px;
     }
 
+    /* Right side: lang switcher + burger, no full nav */
     .header-right-container {
         flex-shrink: 0;
-        gap: 0.5rem;
+        gap: 0.75rem;
+        align-items: center;
     }
 
-    /* Hide desktop top-nav on mobile always */
-    .top-nav,
-    #topNav {
-        display: none !important;
-    }
+    /* Hide full desktop nav in header */
+    .top-nav, #topNav { display: none !important; }
 
-    /* ════ GENERAL SECTIONS ══════════════════════════════════ */
+    /* ─ ALL SECTIONS baseline ─────────────────── */
     .page-section {
         min-height: 100svh;
-        padding: 5rem 1rem 2rem 1rem;
+        padding: 4.5rem 1.25rem 2rem;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -99,40 +180,36 @@
 
     .section-title {
         font-size: 1.5rem;
-        margin-bottom: 1.25rem;
+        margin-bottom: 1rem;
     }
 
-    .section-header-spacing {
-        height: 0.25rem;
-    }
+    .section-header-spacing { height: 0; }
 
-    /* ════ HOME ══════════════════════════════════════════════ */
+    /* ─ HOME ──────────────────────────────────── */
     #home {
-        padding: 0;              /* home handles its own padding */
+        padding: 0;
         min-height: 100svh;
-        position: relative;
     }
 
-    /* Reset the absolute-centered desktop layout */
+    /* Override desktop absolute-centering completely */
     .home-content-centered {
-        position: static;
-        top: auto;
-        left: auto;
-        transform: none;
-        width: 100%;
+        position: static !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        width: 100% !important;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         min-height: 100svh;
         padding: 5rem 1.25rem 4rem;
-        gap: 2rem;
+        gap: 1.75rem;
     }
 
-    /* Profile container: reset desktop absolute bottom positioning */
     .profile-container {
-        position: static;
-        bottom: auto;
+        position: static !important;
+        bottom: auto !important;
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -143,7 +220,7 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 1rem;
+        gap: 0.75rem;
     }
 
     .large-circle {
@@ -168,129 +245,83 @@
         text-align: center;
     }
 
-    /* Home navigation links */
+    /* Home nav: compact centered wrap */
     .home-nav {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        align-items: center;
-        gap: 0.75rem 1.5rem;
+        gap: 0.75rem 1.25rem;
         width: 100%;
+        max-width: 340px;
     }
 
     .home-nav .nav-link {
-        font-size: 1rem;
+        font-size: 0.95rem;
         min-height: 44px;
         display: flex;
         align-items: center;
         opacity: 0.7;
     }
 
-    /* Footer skills row at bottom of home */
+    /* Footer discipline tags */
     .home-footer {
-        position: static;
+        position: static !important;
         width: 100%;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 0.5rem 1rem;
-        font-size: 0.6rem;
+        gap: 0.4rem 1rem;
+        font-size: 0.55rem;
         letter-spacing: 1px;
-        opacity: 0.7;
-        padding: 1rem 0 0;
+        opacity: 0.6;
+        padding-top: 0.5rem;
     }
 
-    /* ════ INFO SECTION ══════════════════════════════════════ */
-    #info.page-section {
-        padding-top: 5rem;
-    }
+    /* ─ INFO ──────────────────────────────────── */
+    #info.page-section { padding-top: 5rem; }
 
-    /* Stack all 3 info columns into 1 */
     .info-grid {
-        display: flex;
+        display: flex !important;
         flex-direction: column;
         gap: 1.5rem;
         margin-bottom: 1.5rem;
-        width: 100%;
     }
 
-    .info-column {
-        width: 100%;
-    }
+    .info-column { width: 100%; }
 
     .info-column h3 {
         font-size: 1rem;
         margin-bottom: 0.75rem;
-        font-weight: 500;
     }
 
-    /* About text */
-    .about-section p {
-        font-size: 0.85rem;
-        line-height: 1.6;
-    }
-
-    /* Work Experience: 2 columns */
-    .work-section.mt-4 {
-        margin-top: 1.25rem;
-    }
+    .about-section p { font-size: 0.85rem; line-height: 1.6; }
 
     .work-grid {
-        display: grid;
+        display: grid !important;
         grid-template-columns: 1fr 1fr;
         gap: 0.75rem;
     }
 
-    .work-role {
-        font-size: 0.72rem;
-        line-height: 1.2;
-    }
-
+    .work-role   { font-size: 0.72rem; line-height: 1.2; }
     .work-company,
-    .work-year {
-        font-size: 0.65rem;
-    }
+    .work-year   { font-size: 0.65rem; }
 
-    /* Education */
-    .education-block {
-        margin-bottom: 1rem;
-    }
-
-    .education-block p {
-        font-size: 0.82rem;
-        line-height: 1.5;
-    }
-
-    /* Skills radar chart */
-    .skills-header,
-    .software-header {
-        margin-bottom: 0.75rem;
-    }
+    .education-block p { font-size: 0.82rem; line-height: 1.5; }
 
     .radar-chart-container {
-        height: 220px;
-        padding: 0.25rem;
+        height: 200px;
+        padding: 0;
     }
 
-    /* Software pills */
-    .pill-group {
-        gap: 0.35rem;
-    }
+    .pill-group { gap: 0.35rem; }
 
     .pill {
         font-size: 0.68rem;
         padding: 0.25rem 0.6rem;
     }
 
-    .icon-pill {
-        gap: 0.4rem;
-    }
-
-    /* Core Competencies */
-    .core-competencies {
-        padding-top: 1.25rem;
-        margin-top: 0;
-    }
+    /* Core Competencies: single column */
+    .core-competencies { padding-top: 1.25rem; }
 
     .core-competencies h3 {
         font-size: 1rem;
@@ -298,22 +329,15 @@
     }
 
     .competency-grid {
-        display: flex;
+        display: flex !important;
         flex-direction: column;
         gap: 1rem;
     }
 
-    .comp-item p {
-        font-size: 0.8rem;
-        line-height: 1.55;
-    }
+    .comp-item p { font-size: 0.8rem; line-height: 1.55; }
+    .comp-item strong { font-size: 0.82rem; margin-bottom: 0.3rem; }
 
-    .comp-item strong {
-        font-size: 0.82rem;
-        margin-bottom: 0.3rem;
-    }
-
-    /* ════ PROJECTS ══════════════════════════════════════════ */
+    /* ─ PROJECTS ──────────────────────────────── */
     #projects.page-section {
         padding-top: 5rem;
         padding-left: 0;
@@ -321,24 +345,17 @@
     }
 
     .glass-container.custom-projects-glass {
-        padding: 1.25rem 1rem 1.5rem;
+        padding: 1.25rem 0 1.5rem;
         border-radius: 16px;
-        overflow: hidden;
     }
 
+    .section-title[data-i18n="proj_title"],
     .projects-header {
-        margin-bottom: 1rem;
-        padding: 0 0.5rem;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
     }
 
-    .section-title[data-i18n="proj_title"] {
-        padding: 0 0.5rem;
-        margin-bottom: 1rem;
-    }
-
-    /* Carousel fills width and scrolls */
     .projects-carousel-wrapper {
-        width: 100%;
         overflow-x: auto;
         overflow-y: visible;
         -webkit-overflow-scrolling: touch;
@@ -346,91 +363,64 @@
         scrollbar-width: none;
     }
 
-    .projects-carousel-wrapper::-webkit-scrollbar {
-        display: none;
-    }
+    .projects-carousel-wrapper::-webkit-scrollbar { display: none; }
 
     .projects-carousel {
-        display: flex;
+        display: flex !important;
         flex-direction: row;
-        gap: 1.25rem;
-        padding: 0.25rem 1rem 0.5rem;
-        width: max-content;    /* let it grow naturally */
+        flex-wrap: nowrap;
+        gap: 1.25rem !important;      /* override the 120px desktop gap */
+        padding: 0.5rem 1.25rem;
+        width: max-content;
     }
 
-    /* Each card: ~80vw wide so 1+ cards are visible */
     .tall-card {
-        flex: 0 0 72vw;
+        flex: 0 0 72vw !important;
         min-width: 0;
-        max-width: 300px;
+        max-width: 280px;
     }
 
-    .proj-image-container {
-        border-radius: 14px;
-        aspect-ratio: 9 / 16;
-    }
+    .proj-image-container { border-radius: 14px; }
 
-    .tall-card .proj-title {
-        font-size: 0.95rem;
-    }
+    .tall-card .proj-title { font-size: 0.95rem; }
+    .tall-card .proj-type  { font-size: 0.68rem; }
 
-    .tall-card .proj-type {
-        font-size: 0.68rem;
-    }
+    .proj-tags { gap: 0.3rem; }
+    .proj-tags .tag { font-size: 0.6rem; padding: 0.15rem 0.5rem; }
 
-    .proj-tags {
-        gap: 0.3rem;
-    }
+    /* ─ HOW / TIMELINE ────────────────────────── */
+    #how.page-section { padding-top: 5rem; }
 
-    .proj-tags .tag {
-        font-size: 0.6rem;
-        padding: 0.15rem 0.5rem;
-    }
-
-    /* ════ HOW I DO IT / TIMELINE ════════════════════════════ */
-    #how.page-section {
-        padding-top: 5rem;
-    }
-
-    /* Timeline scrolls horizontally */
     .timeline-container {
-        display: flex;
+        display: flex !important;
         flex-direction: row;
         flex-wrap: nowrap;
         overflow-x: auto;
-        overflow-y: visible;
         -webkit-overflow-scrolling: touch;
-        gap: 0.5rem;
+        gap: 0.25rem;
         padding: 0.5rem 0 1rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.25rem;
         scrollbar-width: none;
+        justify-content: flex-start;
     }
 
-    .timeline-container::-webkit-scrollbar {
-        display: none;
-    }
+    .timeline-container::-webkit-scrollbar { display: none; }
 
     .timeline-item {
         flex: 0 0 auto;
-        width: 90px;
+        width: 76px;
         text-align: center;
-        cursor: pointer;
     }
 
     .timeline-item h4 {
-        font-size: 0.75rem;
-        margin-bottom: 0.75rem;
+        font-size: 0.7rem;
+        margin-bottom: 0.6rem;
         line-height: 1.2;
     }
 
-    .timeline-item p {
-        display: none;
-    }
+    .timeline-item p { display: none; }
 
-    /* Remove overflowing connector line on mobile */
-    .timeline-item:not(:last-child) .dot::after {
-        display: none;
-    }
+    .timeline-item:not(:last-child) .dot::after { display: none; }
 
     .timeline-details-box {
         padding: 1.25rem;
@@ -439,33 +429,23 @@
     }
 
     .details-grid {
-        display: flex;
+        display: flex !important;
         flex-direction: column;
         gap: 1rem;
-        margin-bottom: 1.25rem;
+        margin-bottom: 1rem;
     }
 
-    .detail-col h5 {
-        font-size: 0.8rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .detail-col p {
-        font-size: 0.78rem;
-        line-height: 1.5;
-    }
+    .detail-col h5 { font-size: 0.8rem; margin-bottom: 0.4rem; }
+    .detail-col p  { font-size: 0.78rem; line-height: 1.5; }
 
     .active-step-title {
-        position: static;
+        position: static !important;
         font-size: 1rem;
         margin-top: 0.5rem;
-        font-weight: 400;
     }
 
-    /* ════ CONTACT ═══════════════════════════════════════════ */
-    #contact.page-section {
-        padding-top: 5rem;
-    }
+    /* ─ CONTACT ────────────────────────────────── */
+    #contact.page-section { padding-top: 5rem; }
 
     .contact-glass {
         padding: 2.5rem 1.25rem;
@@ -475,11 +455,10 @@
     .contact-subtitle {
         font-size: 1rem;
         margin-bottom: 1.75rem;
-        line-height: 1.5;
     }
 
     .contact-links {
-        flex-direction: column;
+        flex-direction: column !important;
         align-items: center;
         gap: 0.75rem;
     }
@@ -496,79 +475,63 @@
     }
 }
 
-/* ─── SMALL MOBILE (≤480px) ─────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════
+   SMALL MOBILE (≤480px)
+   ═══════════════════════════════════════════════════════════════ */
 @media (max-width: 480px) {
 
-    .page-section {
-        padding-left: 0.75rem;
-        padding-right: 0.75rem;
-    }
-
-    .glass-container {
-        padding: 1rem 0.875rem;
-    }
+    .page-section { padding-left: 1rem; padding-right: 1rem; }
+    .glass-container { padding: 1rem 0.875rem; }
 
     .home-text h1 { font-size: 1.5rem; }
-
-    .home-nav .nav-link { font-size: 0.9rem; }
-
-    /* Work items: still 2 cols */
-    .work-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 0.6rem;
-    }
+    .home-nav .nav-link { font-size: 0.88rem; }
 
     .work-role   { font-size: 0.68rem; }
     .work-company,
     .work-year   { font-size: 0.62rem; }
 
-    .tall-card { flex: 0 0 80vw; }
-
-    .proj-image-container { border-radius: 12px; }
+    .tall-card { flex: 0 0 80vw !important; }
 }
 
-/* ─── VERY SMALL MOBILE (≤360px) ────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════
+   VERY SMALL MOBILE (≤360px)
+   ═══════════════════════════════════════════════════════════════ */
 @media (max-width: 360px) {
 
-    .main-header { padding: 0.6rem 0.75rem; }
+    .main-header { padding: 0.65rem 0.875rem; }
+    #headerProfile h2 { max-width: 110px; font-size: 0.78rem; }
 
-    #headerProfile h2 { max-width: 110px; font-size: 0.75rem; }
+    .home-text h1 { font-size: 1.35rem; }
 
-    .home-text h1 { font-size: 1.3rem; }
-
-    .home-nav {
-        gap: 0.6rem 1rem;
-    }
-
-    .tall-card { flex: 0 0 85vw; }
+    .home-nav { gap: 0.5rem 0.875rem; }
 
     .work-grid { grid-template-columns: 1fr; }
+
+    .tall-card { flex: 0 0 85vw !important; }
 
     .glass-container { padding: 0.875rem 0.75rem; }
 }
 
-/* ─── LANDSCAPE (short screens) ─────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════
+   LANDSCAPE SHORT SCREENS (height ≤ 500px)
+   ═══════════════════════════════════════════════════════════════ */
 @media (max-height: 500px) and (orientation: landscape) {
 
     #home { min-height: auto; }
 
     .home-content-centered {
-        min-height: auto;
-        flex-direction: row;
+        flex-direction: row !important;
         flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
+        min-height: auto;
         padding: 4.5rem 2rem 2rem;
-        gap: 1.5rem;
+        gap: 2rem;
+        justify-content: center;
     }
 
     .profile-container { margin-bottom: 0; }
-
     .large-circle { width: 60px; height: 60px; }
 
     .home-text h1 { font-size: 1.4rem; }
-
     .home-nav { margin-top: 0; gap: 0.5rem 1rem; }
-
     .home-footer { display: none; }
 }

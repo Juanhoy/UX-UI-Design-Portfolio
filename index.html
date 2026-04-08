@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="mobile.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -44,8 +45,28 @@
                     </ul>
                 </div>
             </div>
+            <!-- Mobile burger button -->
+            <button class="burger-btn" id="burgerBtn" aria-label="Menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <nav class="mobile-nav-links">
+            <a href="#home" class="mobile-nav-link" data-target="home" data-i18n="nav_home">Home</a>
+            <a href="#info" class="mobile-nav-link" data-target="info" data-i18n="nav_info">Info</a>
+            <a href="#projects" class="mobile-nav-link" data-target="projects" data-i18n="nav_projects">Projects</a>
+            <a href="#how" class="mobile-nav-link" data-target="how" data-i18n="nav_how">My design approach</a>
+            <a href="#contact" class="mobile-nav-link" data-target="contact" data-i18n="nav_contact">Contact</a>
+        </nav>
+        <div class="mobile-nav-lang">
+            <span data-lang="ENG" class="mob-lang-btn">ENG</span>
+            <span data-lang="ESP" class="mob-lang-btn">ESP</span>
+            <span data-lang="POR" class="mob-lang-btn">POR</span>
+        </div>
+    </div>
 
     <!-- Main Content Area -->
     <main class="content-container">

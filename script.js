@@ -1,5 +1,47 @@
 document.addEventListener('DOMContentLoaded', () => {
     
+    // ── Mobile Burger Menu ──────────────────────────────────
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    if (burgerBtn && mobileNavOverlay) {
+        burgerBtn.addEventListener('click', () => {
+            const isOpen = mobileNavOverlay.classList.toggle('open');
+            burgerBtn.classList.toggle('open', isOpen);
+            burgerBtn.setAttribute('aria-expanded', isOpen);
+            document.body.classList.toggle('menu-open', isOpen);
+        });
+
+        // Close overlay when a link is clicked
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('data-target');
+                const targetEl = document.getElementById(targetId);
+                if (targetEl) {
+                    mobileNavOverlay.classList.remove('open');
+                    burgerBtn.classList.remove('open');
+                    burgerBtn.setAttribute('aria-expanded', false);
+                    document.body.classList.remove('menu-open');
+                    setTimeout(() => targetEl.scrollIntoView({ behavior: 'smooth' }), 150);
+                }
+            });
+        });
+
+        // Language switcher inside mobile overlay
+        document.querySelectorAll('.mob-lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                document.getElementById('currentLang').textContent = lang;
+                applyTranslations(lang);
+                mobileNavOverlay.classList.remove('open');
+                burgerBtn.classList.remove('open');
+                document.body.classList.remove('menu-open');
+            });
+        });
+    }
+
     // Smooth Scrolling & Navigation Highlighting
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.page-section');
