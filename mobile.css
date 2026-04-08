@@ -164,10 +164,11 @@ body.menu-open {
     /* ─ ALL SECTIONS baseline ─────────────────── */
     .page-section {
         min-height: 100svh;
-        padding: 4.5rem 1.25rem 2rem;
+        padding: 20px 1.25rem 2rem;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
+        scroll-margin-top: 60px;
     }
 
     .glass-container {
@@ -277,7 +278,7 @@ body.menu-open {
     }
 
     /* ─ INFO ──────────────────────────────────── */
-    #info.page-section { padding-top: 6.5rem; }
+
 
     .info-grid {
         display: flex !important;
@@ -286,7 +287,10 @@ body.menu-open {
         margin-bottom: 1.5rem;
     }
 
-    .info-column { width: 100%; }
+    .info-grid > section {
+        grid-column: auto !important;
+        grid-row: auto !important;
+    }
 
     .info-column h3 {
         font-size: 1rem;
@@ -301,9 +305,9 @@ body.menu-open {
         gap: 0.75rem;
     }
 
-    .work-role   { font-size: 0.72rem; line-height: 1.2; }
+    .work-role   { font-size: 0.82rem; line-height: 1.2; }
     .work-company,
-    .work-year   { font-size: 0.65rem; }
+    .work-year   { font-size: 0.7rem; }
 
     .education-block p { font-size: 0.82rem; line-height: 1.5; }
 
@@ -338,7 +342,6 @@ body.menu-open {
 
     /* ─ PROJECTS ──────────────────────────────── */
     #projects.page-section {
-        padding-top: 5rem;
         padding-left: 0;
         padding-right: 0;
     }
@@ -389,7 +392,7 @@ body.menu-open {
     .proj-tags .tag { font-size: 0.6rem; padding: 0.15rem 0.5rem; }
 
     /* ─ HOW / TIMELINE ────────────────────────── */
-    #how.page-section { padding-top: 5rem; }
+
 
     .timeline-container {
         display: flex !important;
@@ -445,7 +448,7 @@ body.menu-open {
     }
 
     /* ─ CONTACT ────────────────────────────────── */
-    #contact.page-section { padding-top: 5rem; }
+
 
     .contact-glass {
         padding: 2.5rem 1.25rem;
