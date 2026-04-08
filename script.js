@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
             labels: labels,
             datasets: [{
                 label: 'Skill Level',
-                data: [90, 80, 80, 60, 20, 60, 20, 40], // Matches the visual balance of the image
+                data: [75, 80, 80, 60, 20, 60, 20, 40], // UX is now slightly lower than UI/Graphic
                 fill: true,
                 backgroundColor: 'rgba(0, 0, 0, 0.05)',
                 borderColor: '#000000',
