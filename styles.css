@@ -144,7 +144,14 @@ p {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    scroll-margin-top: 80px;
 }
+
+/* Ensure Info section content clears the fixed header */
+#info.page-section {
+    padding-top: 7rem;
+}
+
 
 /* Home Section */
 #home {
@@ -430,14 +437,23 @@ p {
 .custom-projects-glass {
     padding: 1rem 4rem;
 }
-.projects-header {
+
+/* Title + arrows on same row */
+.projects-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin-bottom: 2rem;
 }
 
-/* Carousel Navigation Arrows */
+.projects-title-row .section-title {
+    margin-bottom: 0;
+}
+
+/* Carousel Navigation Arrows — icon only, no background */
 .carousel-nav {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.25rem;
     align-items: center;
 }
 
@@ -445,36 +461,31 @@ p {
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(8px);
+    border: none;
+    background: transparent;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease;
     color: var(--text-main);
+    padding: 0;
 }
 
 .carousel-arrow svg {
-    width: 16px;
-    height: 16px;
+    width: 22px;
+    height: 22px;
     pointer-events: none;
+    stroke: var(--text-main);
 }
 
 .carousel-arrow:hover {
-    background: var(--text-main);
-    color: #fff;
-    transform: scale(1.08);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
-}
-
-.carousel-arrow:hover svg {
-    stroke: #fff;
+    opacity: 0.6;
+    transform: scale(1.1);
 }
 
 .carousel-arrow:active {
-    transform: scale(0.96);
+    transform: scale(0.9);
 }
 
 
