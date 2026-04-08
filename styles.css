@@ -140,6 +140,7 @@ p {
 }
 
 .page-section {
+    min-height: 100vh;
     padding: 50px 4rem 75px 4rem; /* Reduced by 50%: 50px top + 75px bottom = 125px gap */
     display: flex;
     flex-direction: column;
@@ -153,7 +154,6 @@ p {
 /* Home Section */
 #home {
     position: relative;
-    min-height: 100vh;
 }
 
 .home-content-centered {
@@ -719,12 +719,9 @@ p {
 }
 
 /* Contact Section */
-#contact {
-    min-height: auto;
-}
 .contact-glass {
     text-align: center;
-    padding: 3rem;
+    padding: 6rem 3rem;
 }
 .contact-subtitle {
     font-size: 1.25rem;
