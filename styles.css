@@ -138,10 +138,10 @@ p {
 
 .page-section {
     min-height: 100vh;
-    padding: 6rem 4rem 2rem 4rem;
+    padding: 1rem 4rem 1rem 4rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 /* Home Section */
@@ -426,7 +426,7 @@ p {
 
 /* Projects Section */
 .custom-projects-glass {
-    padding: 3rem 4rem;
+    padding: 1rem 4rem;
 }
 .projects-header {
     margin-bottom: 2rem;
@@ -454,7 +454,8 @@ p {
 }
 
 .tall-card {
-    min-width: 280px;
+    flex: 0 0 calc((100% - (2rem * 3)) / 3.5);
+    min-width: 250px;
     background: transparent;
     border: none;
     box-shadow: none;
