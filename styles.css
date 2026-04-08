@@ -141,7 +141,7 @@ p {
 
 .page-section {
     min-height: 100vh;
-    padding: 20px 4rem 230px 4rem; /* 20px top + 230px bottom next section = 250px gap */
+    padding: 100px 4rem 150px 4rem; /* 100px top + 150px bottom next section = 250px gap */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
