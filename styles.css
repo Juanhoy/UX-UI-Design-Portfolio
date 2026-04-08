@@ -140,7 +140,7 @@ p {
 }
 
 .page-section {
-    padding: 50px 4rem 75px 4rem; /* Reduced by 50%: 50px top + 75px bottom = 125px gap */
+    padding: 60px 4rem; /* Uniform 120px gap between sections */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -489,7 +489,7 @@ p {
 
 /* Projects Section */
 .custom-projects-glass {
-    padding: 1rem 4rem;
+    padding: 3rem;
 }
 
 /* Title + arrows on same row */
@@ -719,9 +719,6 @@ p {
 }
 
 /* Contact Section */
-#contact {
-    margin-top: -250px;
-}
 .contact-glass {
     text-align: center;
     padding: 3rem;
