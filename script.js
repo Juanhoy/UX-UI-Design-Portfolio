@@ -209,12 +209,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         ticks: { display: false },
                         pointLabels: {
                             font: { 
-                                size: isMobile ? 9 : 10, 
+                                size: isMobile ? 9 : 11, // Slightly larger on desktop
                                 family: 'Outfit', 
                                 weight: '400' 
                             },
                             color: '#000000',
-                            padding: isMobile ? 5 : 10,
+                            padding: isMobile ? 5 : 20, // More padding for desktop
                             centerPointLabels: true
                         }
                     }
