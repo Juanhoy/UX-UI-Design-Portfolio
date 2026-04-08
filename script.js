@@ -134,14 +134,13 @@ document.addEventListener('DOMContentLoaded', () => {
             labels: labels,
             datasets: [{
                 label: 'Skill Level',
-                data: [90, 85, 75, 70, 65, 80, 85, 90], // Example data levels
+                data: [90, 80, 80, 60, 20, 60, 20, 40], // Matches the visual balance of the image
                 fill: true,
-                backgroundColor: 'rgba(17, 17, 17, 0.1)',
-                borderColor: '#111111',
-                pointBackgroundColor: '#111111',
-                pointBorderColor: '#fff',
-                pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: '#111111',
+                backgroundColor: 'rgba(0, 0, 0, 0.05)',
+                borderColor: '#000000',
+                pointBackgroundColor: '#000000',
+                pointBorderColor: '#000000',
+                pointRadius: 3,
                 borderWidth: 1.5
             }]
         };
@@ -154,14 +153,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 maintainAspectRatio: false,
                 scales: {
                     r: {
-                        angleLines: { display: true, color: 'rgba(0,0,0,0.05)' },
+                        angleLines: { display: true, color: 'rgba(0,0,0,0.1)' },
                         grid: { color: 'rgba(0,0,0,0.05)' },
                         suggestedMin: 0,
                         suggestedMax: 100,
                         ticks: { display: false },
                         pointLabels: {
-                            font: { size: 10, family: 'Outfit' },
-                            color: '#555555'
+                            font: { size: 10, family: 'Outfit', weight: '400' },
+                            color: '#000000',
+                            padding: 10
                         }
                     }
                 },
