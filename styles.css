@@ -58,7 +58,9 @@ p {
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    mix-blend-mode: multiply;
+    background: rgba(247, 247, 247, 0.70);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 }
 
 .site-type {

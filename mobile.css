@@ -121,9 +121,8 @@ body.menu-open {
         align-items: center;
         justify-content: space-between;
         gap: 0.5rem;
-        background: rgba(247, 247, 247, 0.95);
-        backdrop-filter: blur(12px);
         z-index: 200;
+        /* background + backdrop-filter already set in styles.css */
     }
 
     .header-left {
