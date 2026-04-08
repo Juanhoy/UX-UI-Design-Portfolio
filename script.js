@@ -287,4 +287,39 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Projects Carousel Arrow Navigation ---
+    const carouselWrapper = document.querySelector('.projects-carousel-wrapper');
+    const prevBtn = document.getElementById('carouselPrev');
+    const nextBtn = document.getElementById('carouselNext');
+
+    if (carouselWrapper && prevBtn && nextBtn) {
+        // Scroll one card width at a time
+        const getScrollAmount = () => {
+            const firstCard = carouselWrapper.querySelector('.project-card-link');
+            return firstCard ? firstCard.offsetWidth + 120 : 320; // card width + gap
+        };
+
+        const updateArrows = () => {
+            const atStart = carouselWrapper.scrollLeft <= 0;
+            const atEnd = carouselWrapper.scrollLeft + carouselWrapper.clientWidth >= carouselWrapper.scrollWidth - 2;
+            prevBtn.style.opacity = atStart ? '0.3' : '1';
+            prevBtn.style.pointerEvents = atStart ? 'none' : 'auto';
+            nextBtn.style.opacity = atEnd ? '0.3' : '1';
+            nextBtn.style.pointerEvents = atEnd ? 'none' : 'auto';
+        };
+
+        prevBtn.addEventListener('click', () => {
+            carouselWrapper.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+        });
+
+        nextBtn.addEventListener('click', () => {
+            carouselWrapper.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+        });
+
+        carouselWrapper.addEventListener('scroll', updateArrows, { passive: true });
+
+        // Initial state
+        updateArrows();
+    }
+
 });
