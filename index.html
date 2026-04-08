@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
     <link rel="stylesheet" href="mobile.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
     <!-- Background Dotted Pattern layer -->
     <div class="background-grid"></div>
@@ -20,9 +22,11 @@
         <div class="header-left">
             <span class="site-type" id="siteType" data-i18n="site_type">DIGITAL PRODUCT DESIGN PORTFOLIO</span>
             <div class="header-profile hidden" id="headerProfile">
-                <a href="#home" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 1rem;">
+                <a href="#home"
+                    style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 1rem;">
                     <div class="profile-circle small-circle">
-                        <img src="ProfPic/Professional Profile Picture.png" alt="Profile" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                        <img src="ProfPic/Professional Profile Picture.png" alt="Profile"
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                     </div>
                     <h2 data-i18n="home_name">Juan José Hoyos Ríos</h2>
                 </a>
@@ -70,14 +74,15 @@
 
     <!-- Main Content Area -->
     <main class="content-container">
-        
+
         <!-- ================= HOME SECTION ================= -->
         <section id="home" class="page-section active">
             <div class="home-content-centered">
                 <div class="profile-container">
                     <a href="#home" class="home-profile-link">
                         <div class="profile-circle large-circle">
-                            <img src="ProfPic/Professional Profile Picture.png" alt="Profile" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                            <img src="ProfPic/Professional Profile Picture.png" alt="Profile"
+                                style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                         </div>
                         <div class="home-text">
                             <h1 data-i18n="home_name" class="fade-up anim-delay-1">Juan José Hoyos Ríos</h1>
@@ -86,7 +91,7 @@
                         </div>
                     </a>
                 </div>
-                
+
                 <nav class="home-nav">
                     <a href="#info" class="nav-link" data-target="info" data-i18n="nav_info">Info</a>
                     <a href="#projects" class="nav-link" data-target="projects" data-i18n="nav_projects">Projects</a>
@@ -94,7 +99,7 @@
                     <a href="#contact" class="nav-link" data-target="contact" data-i18n="nav_contact">Contact</a>
                 </nav>
             </div>
-            
+
             <footer class="home-footer">
                 <div class="marquee-wrapper">
                     <div class="marquee-content">
@@ -120,9 +125,15 @@
                 <div class="info-grid">
                     <section class="about-section">
                         <h3 data-i18n="info_about_title">About me</h3>
-                        <p data-i18n="info_about_p1">I am a Colombian Product Design Engineer with a holistic approach to the digital product lifecycle—from high-level conceptualization and architectural strategy to final production and lifecycle management. Taking into account my team, project, customers and users goals and needs to create surprising and inspiring digital experiences.</p>
+                        <p data-i18n="info_about_p1">I am a Colombian Product Design Engineer with a holistic approach
+                            to the digital product lifecycle—from high-level conceptualization and architectural
+                            strategy to final production and lifecycle management. Taking into account my team, project,
+                            customers and users goals and needs to create surprising and inspiring digital experiences.
+                        </p>
                         <br>
-                        <p data-i18n="info_about_p2">With over 7 years as a Senior UX/UI Designer at Orbit and nearly a decade as the Creative Director of Bonobo, I bridge the gap between rigorous engineering logic and disruptive visual storytelling.</p>
+                        <p data-i18n="info_about_p2">With over 7 years as a Senior UX/UI Designer at Orbit and nearly a
+                            decade as the Creative Director of Bonobo, I bridge the gap between rigorous engineering
+                            logic and disruptive visual storytelling.</p>
                     </section>
 
                     <section class="education-column">
@@ -144,7 +155,6 @@
                     <section class="skills-section">
                         <div class="skills-header">
                             <h3 data-i18n="info_skills_title">Skills</h3>
-                            <span class="details-link">Details</span>
                         </div>
                         <div class="radar-chart-container">
                             <canvas id="skillsChart"></canvas>
@@ -180,19 +190,33 @@
                     <section class="software-section">
                         <div class="software-header">
                             <h3 data-i18n="info_software_title">Software</h3>
-                            <span class="details-link">Details</span>
                         </div>
                         <div class="pill-group software-group">
-                            <span class="pill icon-pill"><span class="circle-icon"><img src="Softwarelogos/Afinity.png" class="software-logo"></span>Affinity</span>
-                            <span class="pill icon-pill"><span class="circle-icon"><img src="Softwarelogos/Antigravity.png" class="software-logo"></span>Google Antigravity</span>
-                            <span class="pill icon-pill"><span class="circle-icon"><img src="Softwarelogos/Figma.png" class="software-logo"></span>Figma</span>
-                            <span class="pill icon-pill"><span class="circle-icon"><img src="Softwarelogos/Illustrator.png" class="software-logo"></span>Illustrator</span>
-                            <span class="pill icon-pill"><span class="circle-icon"><img src="Softwarelogos/Microsoft365.png" class="software-logo"></span>Microsoft 365</span>
-                            <span class="pill icon-pill"><span class="circle-icon"><img src="Softwarelogos/Netlify.png" class="software-logo"></span>Netlify</span>
-                            <span class="pill icon-pill"><span class="circle-icon"><img src="Softwarelogos/Notion.png" class="software-logo"></span>Notion</span>
-                            <span class="pill icon-pill"><span class="circle-icon"><img src="Softwarelogos/Photoshop.png" class="software-logo"></span>Photoshop</span>
-                            <span class="pill icon-pill"><span class="circle-icon"><img src="Softwarelogos/PremierePro.png" class="software-logo"></span>Premiere Pro</span>
-                            <span class="pill icon-pill"><span class="circle-icon"><img src="Softwarelogos/VisualStudioCode.png" class="software-logo"></span>Visual Studio Code</span>
+                            <span class="pill icon-pill"><span class="circle-icon"><img src="Softwarelogos/Afinity.png"
+                                        class="software-logo"></span>Affinity</span>
+                            <span class="pill icon-pill"><span class="circle-icon"><img
+                                        src="Softwarelogos/Antigravity.png" class="software-logo"></span>Google
+                                Antigravity</span>
+                            <span class="pill icon-pill"><span class="circle-icon"><img src="Softwarelogos/Figma.png"
+                                        class="software-logo"></span>Figma</span>
+                            <span class="pill icon-pill"><span class="circle-icon"><img
+                                        src="Softwarelogos/Illustrator.png"
+                                        class="software-logo"></span>Illustrator</span>
+                            <span class="pill icon-pill"><span class="circle-icon"><img
+                                        src="Softwarelogos/Microsoft365.png" class="software-logo"></span>Microsoft
+                                365</span>
+                            <span class="pill icon-pill"><span class="circle-icon"><img src="Softwarelogos/Netlify.png"
+                                        class="software-logo"></span>Netlify</span>
+                            <span class="pill icon-pill"><span class="circle-icon"><img src="Softwarelogos/Notion.png"
+                                        class="software-logo"></span>Notion</span>
+                            <span class="pill icon-pill"><span class="circle-icon"><img
+                                        src="Softwarelogos/Photoshop.png" class="software-logo"></span>Photoshop</span>
+                            <span class="pill icon-pill"><span class="circle-icon"><img
+                                        src="Softwarelogos/PremierePro.png" class="software-logo"></span>Premiere
+                                Pro</span>
+                            <span class="pill icon-pill"><span class="circle-icon"><img
+                                        src="Softwarelogos/VisualStudioCode.png" class="software-logo"></span>Visual
+                                Studio Code</span>
                         </div>
                     </section>
                 </div>
@@ -201,16 +225,38 @@
                     <h3 class="full-width-title" data-i18n="info_core_title">Things I like to do</h3>
                     <div class="competency-grid">
                         <div class="comp-item">
-                            <p><strong data-i18n="ux_strategy">UX Strategy & Research:</strong> <span data-i18n="core1_desc">A good User Experience starts with order, intention and clarity; these characteristics are given to a design through a deep understanding of the user needs, the use cases and flows, the information architecture, and the project goals and limitations. I like to balance all these things to bring out the best possible solution for the users and the market.</span></p>
+                            <p><strong data-i18n="ux_strategy">UX Strategy & Research:</strong> <span
+                                    data-i18n="core1_desc">A good User Experience starts with order, intention and
+                                    clarity; these characteristics are given to a design through a deep understanding of
+                                    the user needs, the use cases and flows, the information architecture, and the
+                                    project goals and limitations. I like to balance all these things to bring out the
+                                    best possible solution for the users and the market.</span></p>
                         </div>
                         <div class="comp-item">
-                            <p><strong data-i18n="ui_arch">UI Architecture:</strong> <span data-i18n="core2_desc">Once I have a good map and understanding of every stakeholder role and needs in the product interaction, I like to sketch and wireframe some quick ideas and validate with users and stakeholders. Once I have a clear idea, I build a comprehensive, responsive and beautiful component library that can be implemented in different instances of the product.</span></p>
+                            <p><strong data-i18n="ui_arch">UI Architecture:</strong> <span data-i18n="core2_desc">Once I
+                                    have a good map and understanding of every stakeholder role and needs in the product
+                                    interaction, I like to sketch and wireframe some quick ideas and validate with users
+                                    and stakeholders. Once I have a clear idea, I build a comprehensive, responsive and
+                                    beautiful component library that can be implemented in different instances of the
+                                    product.</span></p>
                         </div>
                         <div class="comp-item">
-                            <p><strong data-i18n="proto_front">Prototyping & Front-End:</strong> <span data-i18n="core3_desc">Right now I would consider myself a kind of amateur vibe coder, trying to put together good functional HTML CSS Javascript prototypes that are fully functional and interactive, showcasing possible animations and even facilitating the handover to the developers. I like to use Google Antigravity or Figma Make for these kind of feats.</span></p>
+                            <p><strong data-i18n="proto_front">Prototyping & Front-End:</strong> <span
+                                    data-i18n="core3_desc">Right now I would consider myself a kind of amateur vibe
+                                    coder, trying to put together good functional HTML CSS Javascript prototypes that
+                                    are fully functional and interactive, showcasing possible animations and even
+                                    facilitating the handover to the developers. I like to use Google Antigravity or
+                                    Figma Make for these kind of feats.</span></p>
                         </div>
                         <div class="comp-item">
-                            <p><strong data-i18n="creative_dir">Creative Direction:</strong> <span data-i18n="core4_desc">Through my brands <a href="https://www.instagram.com/bonobo.creativos/" target="_blank" class="inline-link">Bonobo</a> and <a href="https://www.instagram.com/jhoy.labs/" target="_blank" class="inline-link">JHOY labs</a>, I explore the boundaries of branding, 3D experimental art, and motion graphics. From cohesive visual languages to Zbrush modeling and Unreal Engine environments.</span></p>
+                            <p><strong data-i18n="creative_dir">Creative Direction:</strong> <span
+                                    data-i18n="core4_desc">Through my brands <a
+                                        href="https://www.instagram.com/bonobo.creativos/" target="_blank"
+                                        class="inline-link">Bonobo</a> and <a
+                                        href="https://www.instagram.com/jhoy.labs/" target="_blank"
+                                        class="inline-link">JHOY labs</a>, I explore the boundaries of branding, 3D
+                                    experimental art, and motion graphics. From cohesive visual languages to Zbrush
+                                    modeling and Unreal Engine environments.</span></p>
                         </div>
                     </div>
                 </div>
@@ -224,12 +270,14 @@
                     <h2 class="section-title" data-i18n="proj_title">Projects</h2>
                     <div class="carousel-nav">
                         <button class="carousel-arrow" id="carouselPrev" aria-label="Scroll left">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="15 18 9 12 15 6"></polyline>
                             </svg>
                         </button>
                         <button class="carousel-arrow" id="carouselNext" aria-label="Scroll right">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="9 18 15 12 9 6"></polyline>
                             </svg>
                         </button>
@@ -356,14 +404,31 @@
             <div class="glass-container">
                 <div class="section-header-spacing"></div>
 
-                <h2 class="section-title" data-i18n="how_title">My design approach</h2>
+                <div class="projects-title-row">
+                    <h2 class="section-title" data-i18n="how_title">My design approach</h2>
+                    <div class="carousel-nav timeline-nav-mobile">
+                        <button class="carousel-arrow" id="timelinePrev" aria-label="Scroll left">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+                        <button class="carousel-arrow" id="timelineNext" aria-label="Scroll right">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
 
                 <div class="timeline-container">
                     <!-- Timeline items -->
                     <div class="timeline-item active" data-step="empathy">
                         <h4 data-i18n="step_empathy">Empathy</h4>
                         <div class="dot"></div>
-                        <p data-i18n="step_empathy_desc">Identify and understand user needs and company/project goals.</p>
+                        <p data-i18n="step_empathy_desc">Identify and understand user needs and company/project goals.
+                        </p>
                     </div>
                     <div class="timeline-item" data-step="use-cases">
                         <h4 data-i18n="step_usecases">Use Cases</h4>
@@ -378,7 +443,8 @@
                     <div class="timeline-item" data-step="ui-design">
                         <h4 data-i18n="step_uidesign">UI Design</h4>
                         <div class="dot"></div>
-                        <p data-i18n="step_uidesign_desc">Design components and pages with Atomic Design methodology.</p>
+                        <p data-i18n="step_uidesign_desc">Design components and pages with Atomic Design methodology.
+                        </p>
                     </div>
                     <div class="timeline-item" data-step="prototype">
                         <h4 data-i18n="step_prototype">Prototype</h4>
@@ -400,16 +466,21 @@
                 <div class="timeline-details-box">
                     <div class="details-grid">
                         <div class="detail-col">
-                            <h5><span class="icon">⌖</span> <span data-i18n="methodologies_title">Methodologies</span></h5>
-                            <p id="t_methods" data-i18n="tl_empathy_methods">Stakeholder Briefing, User Research, Deep-Dive Interviews, User Personas, Empathy Mapping, Content Requirement, WCAG Compliance.</p>
+                            <h5><span class="icon">⌖</span> <span data-i18n="methodologies_title">Methodologies</span>
+                            </h5>
+                            <p id="t_methods" data-i18n="tl_empathy_methods">Stakeholder Briefing, User Research,
+                                Deep-Dive Interviews, User Personas, Empathy Mapping, Content Requirement, WCAG
+                                Compliance.</p>
                         </div>
                         <div class="detail-col">
                             <h5><span class="icon">🪄</span> <span data-i18n="skills_title">Skills</span></h5>
-                            <p id="t_skills" data-i18n="tl_empathy_skills">Information Synthesis, Insight Extraction, Strategic Alignment, Active Listening.</p>
+                            <p id="t_skills" data-i18n="tl_empathy_skills">Information Synthesis, Insight Extraction,
+                                Strategic Alignment, Active Listening.</p>
                         </div>
                         <div class="detail-col">
                             <h5><span class="icon">👓</span> <span data-i18n="software_box_title">Software</span></h5>
-                            <p id="t_software" data-i18n="tl_empathy_soft">Notion x Claude, FigJam, Evernote, Otter.ai (Transcription), Office 365, Azure Dev Ops, MS Teams.</p>
+                            <p id="t_software" data-i18n="tl_empathy_soft">Notion x Claude, FigJam, Evernote, Otter.ai
+                                (Transcription), Office 365, Azure Dev Ops, MS Teams.</p>
                         </div>
                     </div>
                     <h3 class="active-step-title" id="t_title" data-i18n="step_empathy">Empathy</h3>
@@ -425,8 +496,10 @@
                     <p class="contact-subtitle">Let's create something amazing together.</p>
                     <div class="contact-links fade-up anim-delay-2">
                         <a href="mailto:jjhoyosr@gmail.com" class="contact-btn">Email Me</a>
-                        <a href="https://www.linkedin.com/in/juanho/" target="_blank" class="contact-btn outline">LinkedIn</a>
-                        <a href="https://www.behance.net/jhoyosr#" target="_blank" class="contact-btn outline">Behance</a>
+                        <a href="https://www.linkedin.com/in/juanho/" target="_blank"
+                            class="contact-btn outline">LinkedIn</a>
+                        <a href="https://www.behance.net/jhoyosr#" target="_blank"
+                            class="contact-btn outline">Behance</a>
                     </div>
                 </div>
             </div>
@@ -437,4 +510,5 @@
     <script src="translations.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>

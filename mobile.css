@@ -172,10 +172,11 @@ body.menu-open {
     }
 
     .glass-container {
-        padding: 1.25rem 1rem;
+        padding: 1.5rem 1.25rem;
         border-radius: 16px;
-        width: 100%;
-        max-width: 100%;
+        width: 95%; /* Use more width */
+        max-width: 95%;
+        margin: 0 auto;
     }
 
     .section-title {
@@ -312,8 +313,10 @@ body.menu-open {
     .education-block p { font-size: 0.82rem; line-height: 1.5; }
 
     .radar-chart-container {
-        height: 200px;
+        height: 280px; /* Increased height */
         padding: 0;
+        width: 100%;
+        margin: 0 auto;
     }
 
     .pill-group { gap: 0.35rem; }
@@ -400,30 +403,49 @@ body.menu-open {
         flex-wrap: nowrap;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
-        gap: 0.25rem;
-        padding: 0.5rem 0 1rem;
-        margin-bottom: 1.25rem;
+        gap: 0px; /* Changed from 0.25rem to 0 to overlap connector line */
+        padding: 2rem 0 3rem;
+        margin-bottom: 0.5rem;
         scrollbar-width: none;
         justify-content: flex-start;
+        scroll-snap-type: x mandatory;
     }
 
     .timeline-container::-webkit-scrollbar { display: none; }
 
     .timeline-item {
         flex: 0 0 auto;
-        width: 76px;
+        width: 100px; /* Increased from 76px */
         text-align: center;
+        scroll-snap-align: center;
     }
 
     .timeline-item h4 {
-        font-size: 0.7rem;
-        margin-bottom: 0.6rem;
+        font-size: 0.84rem; /* 20% bigger than 0.7rem */
+        margin-bottom: 1.2rem;
         line-height: 1.2;
+        padding: 0 5px;
     }
 
     .timeline-item p { display: none; }
 
-    .timeline-item:not(:last-child) .dot::after { display: none; }
+    /* Restore connector line on mobile */
+    .timeline-item:not(:last-child) .dot::after {
+        display: block;
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        width: 100px; /* same as item width */
+        height: 1px;
+        background: rgba(0,0,0,0.1);
+        transform: translateY(-50%);
+        z-index: -1;
+    }
+
+    .timeline-nav-mobile {
+        display: flex !important;
+    }
 
     .timeline-details-box {
         padding: 1.25rem;

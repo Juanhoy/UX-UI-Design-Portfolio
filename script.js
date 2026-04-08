@@ -160,6 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function initChart(lang) {
         if (!ctx) return;
         const strings = window.translations[lang] || window.translations['ENG'];
+        const isMobile = window.innerWidth <= 768;
 
         const labels = [
             strings['skill_label_ux'],
@@ -170,19 +171,25 @@ document.addEventListener('DOMContentLoaded', () => {
             strings['skill_label_art'],
             strings['skill_label_prompt'],
             strings['skill_label_frontend']
-        ];
+        ].map(label => {
+            // Split labels with two or more words on mobile
+            if (isMobile && label.includes(' ')) {
+                return label.split(' ');
+            }
+            return label;
+        });
 
         const data = {
             labels: labels,
             datasets: [{
                 label: 'Skill Level',
-                data: [75, 80, 80, 50, 40, 60, 30, 40], // UX is now slightly lower than UI/Graphic
+                data: [75, 80, 80, 50, 40, 60, 30, 40],
                 fill: true,
                 backgroundColor: 'rgba(0, 0, 0, 0.05)',
                 borderColor: '#000000',
                 pointBackgroundColor: '#000000',
                 pointBorderColor: '#000000',
-                pointRadius: 3,
+                pointRadius: isMobile ? 2 : 3,
                 borderWidth: 1.5
             }]
         };
@@ -201,9 +208,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         suggestedMax: 100,
                         ticks: { display: false },
                         pointLabels: {
-                            font: { size: 10, family: 'Outfit', weight: '400' },
+                            font: { 
+                                size: isMobile ? 9 : 10, 
+                                family: 'Outfit', 
+                                weight: '400' 
+                            },
                             color: '#000000',
-                            padding: 10
+                            padding: isMobile ? 5 : 10,
+                            centerPointLabels: true
                         }
                     }
                 },
@@ -321,6 +333,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Initial state
         updateArrows();
+    }
+
+    // --- Timeline Carousel Arrow Navigation ---
+    const timelineWrapper = document.querySelector('.timeline-container');
+    const tPrevBtn = document.getElementById('timelinePrev');
+    const tNextBtn = document.getElementById('timelineNext');
+
+    if (timelineWrapper && tPrevBtn && tNextBtn) {
+        const getTScrollAmount = () => {
+            const firstItem = timelineWrapper.querySelector('.timeline-item');
+            return firstItem ? firstItem.offsetWidth + 20 : 120;
+        };
+
+        const updateTArrows = () => {
+            const atStart = timelineWrapper.scrollLeft <= 2;
+            const atEnd = timelineWrapper.scrollLeft + timelineWrapper.clientWidth >= timelineWrapper.scrollWidth - 2;
+            tPrevBtn.style.opacity = atStart ? '0.3' : '1';
+            tPrevBtn.style.pointerEvents = atStart ? 'none' : 'auto';
+            tNextBtn.style.opacity = atEnd ? '0.3' : '1';
+            tNextBtn.style.pointerEvents = atEnd ? 'none' : 'auto';
+        };
+
+        tPrevBtn.addEventListener('click', () => {
+            timelineWrapper.scrollBy({ left: -getTScrollAmount(), behavior: 'smooth' });
+        });
+
+        tNextBtn.addEventListener('click', () => {
+            timelineWrapper.scrollBy({ left: getTScrollAmount(), behavior: 'smooth' });
+        });
+
+        timelineWrapper.addEventListener('scroll', updateTArrows, { passive: true });
+        updateTArrows();
     }
 
 });
