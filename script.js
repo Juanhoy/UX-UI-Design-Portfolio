@@ -111,6 +111,74 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // --- Skills Radar Chart ---
+    let skillsChart;
+    const ctx = document.getElementById('skillsChart');
+
+    function initChart(lang) {
+        if (!ctx) return;
+        const strings = window.translations[lang] || window.translations['ENG'];
+        
+        const labels = [
+            strings['skill_label_ux'],
+            strings['skill_label_ui'],
+            strings['skill_label_graphic'],
+            strings['skill_label_pm'],
+            strings['skill_label_tm'],
+            strings['skill_label_art'],
+            strings['skill_label_prompt'],
+            strings['skill_label_frontend']
+        ];
+
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Skill Level',
+                data: [90, 85, 75, 70, 65, 80, 85, 90], // Example data levels
+                fill: true,
+                backgroundColor: 'rgba(17, 17, 17, 0.1)',
+                borderColor: '#111111',
+                pointBackgroundColor: '#111111',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: '#111111',
+                borderWidth: 1.5
+            }]
+        };
+
+        const config = {
+            type: 'radar',
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { display: true, color: 'rgba(0,0,0,0.05)' },
+                        grid: { color: 'rgba(0,0,0,0.05)' },
+                        suggestedMin: 0,
+                        suggestedMax: 100,
+                        ticks: { display: false },
+                        pointLabels: {
+                            font: { size: 10, family: 'Outfit' },
+                            color: '#555555'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: false }
+                }
+            }
+        };
+
+        if (skillsChart) skillsChart.destroy();
+        skillsChart = new Chart(ctx, config);
+    }
+
+    // Initial chart load
+    initChart('ENG');
+
     function applyTranslations(lang) {
         if (!window.translations || !window.translations[lang]) return;
         const strings = window.translations[lang];
@@ -121,6 +189,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.innerHTML = strings[key];
             }
         });
+
+        // Re-init chart with new labels
+        initChart(lang);
     }
 
     langSelectorOptions.forEach(option => {

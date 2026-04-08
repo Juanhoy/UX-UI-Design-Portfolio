@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <!-- Background Dotted Pattern layer -->
@@ -88,10 +89,38 @@
 
                 <div class="info-grid">
                     <div class="info-column">
-                        <h3 data-i18n="info_about_title">About me</h3>
-                        <p data-i18n="info_about_p1">I am a Colombian Product Design Engineer with a holistic approach to the digital product lifecycle—from high-level conceptualization and architectural strategy to final production and lifecycle management. Taking into account my team, project, customers and users goals and needs to create surprising and inspiring digital experiences.</p>
-                        <br>
-                        <p data-i18n="info_about_p2">With over 7 years as a Senior UX/UI Designer at Orbit and nearly a decade as the Creative Director of Bonobo, I bridge the gap between rigorous engineering logic and disruptive visual storytelling.</p>
+                        <section class="about-section">
+                            <h3 data-i18n="info_about_title">About me</h3>
+                            <p data-i18n="info_about_p1">I am a Colombian Product Design Engineer with a holistic approach to the digital product lifecycle—from high-level conceptualization and architectural strategy to final production and lifecycle management. Taking into account my team, project, customers and users goals and needs to create surprising and inspiring digital experiences.</p>
+                            <br>
+                            <p data-i18n="info_about_p2">With over 7 years as a Senior UX/UI Designer at Orbit and nearly a decade as the Creative Director of Bonobo, I bridge the gap between rigorous engineering logic and disruptive visual storytelling.</p>
+                        </section>
+
+                        <section class="work-section mt-4">
+                            <h3 data-i18n="info_work_title">Work Experience</h3>
+                            <div class="work-grid">
+                                <div class="work-item">
+                                    <p class="work-role" data-i18n="work_1_role">Senior UX UI Designer</p>
+                                    <p class="work-company" data-i18n="work_1_company">Orbit Group Partners</p>
+                                    <p class="work-year" data-i18n="work_1_year">2020-2028</p>
+                                </div>
+                                <div class="work-item">
+                                    <p class="work-role" data-i18n="work_2_role">Creative Director</p>
+                                    <p class="work-company" data-i18n="work_2_company">DEKA Design</p>
+                                    <p class="work-year" data-i18n="work_2_year">2020-2026</p>
+                                </div>
+                                <div class="work-item">
+                                    <p class="work-role" data-i18n="work_3_role">Designer</p>
+                                    <p class="work-company" data-i18n="work_3_company">Andes</p>
+                                    <p class="work-year" data-i18n="work_3_year">2020-2028</p>
+                                </div>
+                                <div class="work-item">
+                                    <p class="work-role" data-i18n="work_4_role">Design Intern</p>
+                                    <p class="work-company" data-i18n="work_4_company">Grupo IMASD</p>
+                                    <p class="work-year" data-i18n="work_4_year">2020-2026</p>
+                                </div>
+                            </div>
+                        </section>
                     </div>
 
                     <div class="info-column">
@@ -111,24 +140,19 @@
                     </div>
 
                     <div class="info-column">
-                        <h3 data-i18n="info_skills_title">Skills</h3>
-                        <!-- Note: Individual skills aren't cleanly translatable line-by-line in the prompt request, but I added the container. We could translate them individually if needed, but for now I leave them as they are domain terms. -->
-                        <div class="pill-group">
-                            <span class="pill skill-pill"><span class="skill-dots level-medium"><span></span><span></span><span></span></span><span data-i18n="skill_1">Stakeholder Briefing</span></span>
-                            <span class="pill skill-pill"><span class="skill-dots level-high"><span></span><span></span><span></span></span><span data-i18n="skill_2">User Research</span></span>
-                            <span class="pill skill-pill"><span class="skill-dots level-high"><span></span><span></span><span></span></span><span data-i18n="skill_3">User persona</span></span>
-                            <span class="pill skill-pill"><span class="skill-dots level-low"><span></span><span></span><span></span></span><span data-i18n="skill_4">Functional benchmark</span></span>
-                            <span class="pill skill-pill"><span class="skill-dots level-low"><span></span><span></span><span></span></span><span data-i18n="skill_5">Empathy Maps</span></span>
-                            <span class="pill skill-pill"><span class="skill-dots level-high"><span></span><span></span><span></span></span><span data-i18n="skill_6">Use cases</span></span>
-                            <span class="pill skill-pill"><span class="skill-dots level-high"><span></span><span></span><span></span></span><span data-i18n="skill_7">Use flow diagrams</span></span>
-                            <span class="pill skill-pill"><span class="skill-dots level-high"><span></span><span></span><span></span></span><span data-i18n="skill_8">UI Component Design</span></span>
-                            <span class="pill skill-pill"><span class="skill-dots level-medium"><span></span><span></span><span></span></span><span data-i18n="skill_9">Design Systems Management</span></span>
-                            <span class="pill skill-pill"><span class="skill-dots level-high"><span></span><span></span><span></span></span><span data-i18n="skill_10">High fidelity flow mockups</span></span>
-                            <span class="pill skill-pill"><span class="skill-dots level-medium"><span></span><span></span><span></span></span><span data-i18n="skill_11">Prompt engineering</span></span>
-                            <span class="pill skill-pill"><span class="skill-dots level-medium"><span></span><span></span><span></span></span><span data-i18n="skill_12">HTML CSS JS Prototype</span></span>
+                        <div class="skills-header">
+                            <h3 data-i18n="info_skills_title">Skills</h3>
+                            <span class="details-link">Details</span>
+                        </div>
+                        
+                        <div class="radar-chart-container">
+                            <canvas id="skillsChart"></canvas>
                         </div>
 
-                        <h3 class="mt-4" data-i18n="info_software_title">Software</h3>
+                        <div class="software-header mt-4">
+                            <h3 data-i18n="info_software_title">Software</h3>
+                            <span class="details-link">Details</span>
+                        </div>
                         <div class="pill-group software-group">
                             <span class="pill icon-pill"><span class="circle-icon"><img src="Softwarelogos/Afinity.png" class="software-logo"></span>Affinity</span>
                             <span class="pill icon-pill"><span class="circle-icon"><img src="Softwarelogos/Antigravity.png" class="software-logo"></span>Google Antigravity</span>
@@ -178,63 +202,74 @@
 
                 <div class="projects-grid">
                     <!-- Project 1 -->
-                    <div class="project-card">
-                        <h4 class="proj-title" data-i18n="proj_1_title">Whee !</h4>
-                        <p class="proj-type" data-i18n="proj_1_type">MOBILE APP</p>
-                        <div class="proj-image-box"></div>
-                        <div class="proj-tags">
-                            <span class="tag" data-i18n="tag_user_res">User research</span>
-                            <span class="tag" data-i18n="tag_use_cases">Use cases and flows</span>
-                            <span class="tag" data-i18n="tag_high_fid">High fidelity flow prototypes</span>
+                    <a href="https://wheeplayspaces.netlify.app/" target="_blank" class="project-card-link">
+                        <div class="project-card">
+                            <h4 class="proj-title" data-i18n="proj_1_title">Whee !</h4>
+                            <p class="proj-type" data-i18n="proj_1_type">MOBILE APP</p>
+                            <div class="proj-image-box"></div>
+                            <div class="proj-tags">
+                                <span class="tag" data-i18n="tag_user_res">User research</span>
+                                <span class="tag" data-i18n="tag_use_cases">Use cases and flows</span>
+                                <span class="tag" data-i18n="tag_high_fid">High fidelity flow prototypes</span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Project 2 -->
-                    <div class="project-card">
-                        <h4 class="proj-title" data-i18n="proj_2_title">Livia</h4>
-                        <p class="proj-type" data-i18n="proj_2_type">WEBSITE</p>
-                        <div class="proj-image-box"></div>
-                        <div class="proj-tags">
-                            <span class="tag" data-i18n="tag_user_res">User research</span>
-                            <span class="tag" data-i18n="tag_use_cases">Use cases and flows</span>
-                            <span class="tag" data-i18n="tag_high_fid">High fidelity flow prototypes</span>
+                    <a href="https://app.netlify.com/projects/liviafree/overview" target="_blank" class="project-card-link">
+                        <div class="project-card">
+                            <h4 class="proj-title" data-i18n="proj_2_title">Livia</h4>
+                            <p class="proj-type" data-i18n="proj_2_type">WEBSITE</p>
+                            <div class="proj-image-box"></div>
+                            <div class="proj-tags">
+                                <span class="tag" data-i18n="tag_user_res">User research</span>
+                                <span class="tag" data-i18n="tag_use_cases">Use cases and flows</span>
+                                <span class="tag" data-i18n="tag_high_fid">High fidelity flow prototypes</span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Project 3 -->
-                    <div class="project-card">
-                        <h4 class="proj-title" data-i18n="proj_3_title">Current</h4>
-                        <p class="proj-type" data-i18n="proj_3_type">MOBILE APP</p>
-                        <div class="proj-image-box"></div>
-                        <div class="proj-tags">
-                            <span class="tag" data-i18n="tag_user_res">User research</span>
-                            <span class="tag" data-i18n="tag_use_cases">Use cases and flows</span>
-                            <span class="tag" data-i18n="tag_high_fid">High fidelity flow prototypes</span>
+                    <a href="https://currentcreations.netlify.app/" target="_blank" class="project-card-link">
+                        <div class="project-card">
+                            <h4 class="proj-title" data-i18n="proj_3_title">Current Creations</h4>
+                            <p class="proj-type" data-i18n="proj_3_type">WEBSITE</p>
+                            <div class="proj-image-box"></div>
+                            <div class="proj-tags">
+                                <span class="tag" data-i18n="tag_stitch">Google Stitch</span>
+                                <span class="tag" data-i18n="tag_figma">Figma</span>
+                                <span class="tag" data-i18n="tag_gemini">Google Gemini</span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Project 4 -->
-                    <div class="project-card">
-                        <h4 class="proj-title" data-i18n="proj_4_title">Bee Me</h4>
-                        <p class="proj-type" data-i18n="proj_4_type">MOBILE APP</p>
-                        <div class="proj-image-box"></div>
-                        <div class="proj-tags">
-                            <span class="tag" data-i18n="tag_user_res">User research</span>
-                            <span class="tag" data-i18n="tag_use_cases">Use cases and flows</span>
-                            <span class="tag" data-i18n="tag_high_fid">High fidelity flow prototypes</span>
+                    <a href="https://contramargen.netlify.app/" target="_blank" class="project-card-link">
+                        <div class="project-card">
+                            <h4 class="proj-title" data-i18n="proj_4_title">Contramargen</h4>
+                            <p class="proj-type" data-i18n="proj_4_type">WEBSITE</p>
+                            <div class="proj-image-box"></div>
+                            <div class="proj-tags">
+                                <span class="tag" data-i18n="tag_stitch">Google Stitch</span>
+                                <span class="tag" data-i18n="tag_gemini">Google Gemini</span>
+                                <span class="tag" data-i18n="tag_figma">Figma</span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Project 5 -->
-                    <div class="project-card">
-                        <h4 class="proj-title" data-i18n="proj_5_title">Juan Hoyos</h4>
-                        <p class="proj-type" data-i18n="proj_5_type">WEB DASHBOARD</p>
-                        <div class="proj-image-box"></div>
-                        <div class="proj-tags">
-                            <span class="tag" data-i18n="tag_user_res">User research</span>
-                            <span class="tag" data-i18n="tag_use_cases">Use cases and flows</span>
+                    <a href="https://unhombrealado.netlify.app/" target="_blank" class="project-card-link">
+                        <div class="project-card">
+                            <h4 class="proj-title" data-i18n="proj_5_title">Un Hombre Alado</h4>
+                            <p class="proj-type" data-i18n="proj_5_type">ART PORTFOLIO</p>
+                            <div class="proj-image-box"></div>
+                            <div class="proj-tags">
+                                <span class="tag" data-i18n="tag_user_res">User research</span>
+                                <span class="tag" data-i18n="tag_use_cases">Use cases and flows</span>
+                                <span class="tag" data-i18n="tag_high_fid">High fidelity flow prototypes</span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Project 6 -->
                     <div class="project-card">

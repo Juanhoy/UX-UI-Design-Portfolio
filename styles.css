@@ -295,24 +295,83 @@ p {
     font-size: 0.75rem;
     color: var(--text-main);
 }
-.skill-pill {
-    display: inline-flex;
+
+/* Work Experience */
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+.work-item {
+    margin-bottom: 0.5rem;
+}
+.work-role {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 0.1rem;
+}
+.work-company {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+.work-year {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    opacity: 0.8;
+}
+
+/* Radar Chart */
+.skills-header, .software-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1.5rem;
+}
+.details-link {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-decoration: underline;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: var(--transition);
+}
+.details-link:hover {
+    opacity: 1;
+}
+
+.radar-chart-container {
+    width: 100%;
+    aspect-ratio: 1.2;
+    padding: 1rem;
+    display: flex;
     align-items: center;
+    justify-content: center;
 }
-.skill-dots {
-    display: inline-flex;
-    gap: 3px;
-    margin-right: 8px;
+
+#skillsChart {
+    max-width: 100%;
+    max-height: 100%;
 }
-.skill-dots span {
-    width: 6px;
-    height: 6px;
-    background-color: #c4c4c4;
-    border-radius: 50%;
+
+/* Project Links */
+.project-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
-.level-low span:nth-child(1) { background-color: var(--text-main); }
-.level-medium span:nth-child(1), .level-medium span:nth-child(2) { background-color: var(--text-main); }
-.level-high span { background-color: var(--text-main); }
+
+.inline-link {
+    color: var(--text-main);
+    text-decoration: underline;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.inline-link:hover {
+    color: var(--accent-color);
+    opacity: 0.8;
+}
 
 .icon-pill {
     display: flex;
