@@ -292,7 +292,7 @@ body.menu-open {
         grid-row: auto !important;
     }
 
-    .info-column h3 {
+    .info-grid h3 {
         font-size: 1rem;
         margin-bottom: 0.75rem;
     }
