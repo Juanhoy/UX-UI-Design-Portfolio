@@ -432,6 +432,11 @@ p {
     margin-bottom: 2rem;
 }
 
+/* Ensure the projects section clears the fixed header */
+#projects.page-section {
+    padding-top: 7rem;
+}
+
 .projects-carousel-wrapper {
     width: 100%;
     overflow-x: auto;
@@ -449,12 +454,12 @@ p {
 
 .projects-carousel {
     display: flex;
-    gap: 2rem;
+    gap: 120px;
     padding: 0.5rem;
 }
 
 .tall-card {
-    flex: 0 0 calc((100% - (2rem * 3)) / 3.5);
+    flex: 0 0 calc((100% - (120px * 3)) / 3.5);
     min-width: 250px;
     background: transparent;
     border: none;
@@ -653,18 +658,5 @@ p {
 .anim-delay-2 { animation-delay: 0.2s; }
 .anim-delay-3 { animation-delay: 0.3s; }
 
-/* Responsive basics */
-@media (max-width: 1024px) {
-    .info-grid { grid-template-columns: 1fr; }
-    .competency-grid { grid-template-columns: 1fr 1fr; }
-    .projects-grid { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 768px) {
-    .main-header { padding: 1rem; flex-direction: column; gap: 1rem; }
-    .home-footer { flex-direction: column; align-items: center; gap: 1rem; }
-    .timeline-container { flex-direction: column; gap: 2rem; align-items: center; }
-    .timeline-item:not(:last-child) .dot::after { display: none; }
-    .details-grid { grid-template-columns: 1fr; }
-    .contact-links { flex-direction: column; gap: 1rem; }
-}
+/* Mobile-specific responsive rules live in mobile.css */
 

@@ -1,0 +1,458 @@
+/*
+ * ============================================================
+ *  MOBILE RESPONSIVE STYLES  —  mobile.css
+ *  Scope: ALL rules are inside max-width media queries.
+ *  Desktop behaviour is completely untouched.
+ * ============================================================
+ */
+
+/* ─── TABLET (≤1024px) ─────────────────────────────────── */
+@media (max-width: 1024px) {
+
+    /* Header */
+    .main-header {
+        padding: 1.25rem 2rem;
+    }
+
+    /* Sections */
+    .page-section {
+        padding: 1.5rem 2rem 1.5rem 2rem;
+    }
+
+    /* Glass container */
+    .glass-container {
+        padding: 2rem;
+    }
+
+    /* Info grid: 2 columns on tablet */
+    .info-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+
+    /* Skills column spans full width on tablet */
+    .info-grid .info-column:last-child {
+        grid-column: 1 / -1;
+    }
+
+    /* Work grid: 2 columns */
+    .work-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Competency grid: 2 columns */
+    .competency-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Projects carousel: show 2.5 per screen */
+    .tall-card {
+        flex: 0 0 calc((100% - (2rem * 2)) / 2.5);
+    }
+
+    /* Home nav spacing */
+    .home-nav {
+        gap: 2.5rem;
+    }
+
+    /* Home heading */
+    .home-text h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* ─── MOBILE (≤768px) ─────────────────────────────────── */
+@media (max-width: 768px) {
+
+    /* ── Global body / overflow guard */
+    html, body {
+        overflow-x: hidden;
+    }
+
+    /* ══ HEADER ══════════════════════════════════════════ */
+    .main-header {
+        padding: 1rem 1.25rem;
+        flex-direction: row;          /* keep logo + controls in one row */
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    .header-left {
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    .site-type {
+        font-size: 0.6rem;
+        letter-spacing: 1px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 200px;
+    }
+
+    /* Collapse the header profile text to just avatar on mobile */
+    .header-profile h2 {
+        display: none;
+    }
+
+    .header-right-container {
+        gap: 0.75rem;
+    }
+
+    /* Top nav: hide on mobile (home nav handles navigation) */
+    .top-nav {
+        display: none !important;
+    }
+
+    /* ══ SECTIONS ════════════════════════════════════════ */
+    .page-section {
+        min-height: auto;
+        padding: 5rem 1.25rem 2rem 1.25rem;  /* top: clear fixed header */
+        justify-content: flex-start;
+    }
+
+    .glass-container {
+        padding: 1.5rem 1.25rem;
+        border-radius: 16px;
+    }
+
+    .section-header-spacing {
+        height: 0.5rem;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* ══ HOME ════════════════════════════════════════════ */
+    #home {
+        min-height: 100svh;           /* safe viewport height for mobile browsers */
+    }
+
+    .home-content-centered {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100svh;
+        padding: 6rem 1.5rem 5rem;
+    }
+
+    .profile-container {
+        position: relative;
+        bottom: auto;
+        width: 100%;
+        margin-bottom: 2.5rem;
+    }
+
+    .home-profile-link {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .large-circle {
+        width: 90px;
+        height: 90px;
+        margin-bottom: 0;
+    }
+
+    .home-text h1 {
+        font-size: 1.9rem;
+        text-align: center;
+    }
+
+    .home-text .subtitle,
+    .home-text .location {
+        text-align: center;
+    }
+
+    .home-nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.25rem 2rem;
+        margin-top: 1.5rem;
+    }
+
+    .home-nav .nav-link {
+        font-size: 1rem;
+        min-height: 44px;             /* touch target */
+        display: flex;
+        align-items: center;
+    }
+
+    .home-footer {
+        position: static;
+        margin-top: 2rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.75rem 1.5rem;
+        font-size: 0.65rem;
+    }
+
+    /* ══ INFO ════════════════════════════════════════════ */
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .info-grid .info-column:last-child {
+        grid-column: auto;
+    }
+
+    .info-column h3 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+
+    /* Work grid: 2 columns on mobile */
+    .work-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+
+    .work-role  { font-size: 0.75rem; }
+    .work-company,
+    .work-year  { font-size: 0.7rem; }
+
+    /* Radar chart: sensible height */
+    .radar-chart-container {
+        height: 240px;
+    }
+
+    /* Software pills wrap naturally */
+    .pill-group { gap: 0.4rem; }
+    .pill       { font-size: 0.7rem; padding: 0.3rem 0.7rem; }
+
+    /* Core competencies */
+    .core-competencies {
+        padding-top: 1.5rem;
+    }
+
+    .core-competencies h3 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+
+    .competency-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    /* ══ PROJECTS ════════════════════════════════════════ */
+    .custom-projects-glass {
+        padding: 1rem 1.25rem;
+    }
+
+    /* Keep projects section below fixed header on mobile */
+    #projects.page-section {
+        padding-top: 5rem;
+    }
+
+    .projects-header {
+        margin-bottom: 1rem;
+    }
+
+    /* Reduce 120px gap to 2rem on mobile */
+    .projects-carousel {
+        gap: 2rem;
+    }
+
+    /* Show 1.2 cards on mobile so scroll intent is visually obvious */
+    .tall-card {
+        flex: 0 0 calc(100% - 3rem);  /* ~1.2 cards visible */
+        min-width: 220px;
+    }
+
+    .proj-image-container {
+        border-radius: 16px;
+    }
+
+    .tall-card .proj-title {
+        font-size: 1rem;
+    }
+
+    /* projects carousel: leave padding so cards don't bleed to edge */
+    .projects-carousel {
+        padding: 0.5rem 0.25rem;
+    }
+
+    /* ══ HOW I DO IT (TIMELINE) ══════════════════════════ */
+    .timeline-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 0;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+        scrollbar-width: none;
+    }
+
+    .timeline-container::-webkit-scrollbar { display: none; }
+
+    .timeline-item {
+        width: auto;
+        min-width: 80px;
+        padding: 0 0.5rem;
+        opacity: 0.7;
+        flex-shrink: 0;
+    }
+
+    .timeline-item h4 {
+        font-size: 0.8rem;
+    }
+
+    .timeline-item p {
+        display: none;   /* hide desc in scrollable header; detail box shows it */
+    }
+
+    /* Restore connector dots on horizontal scroll */
+    .timeline-item:not(:last-child) .dot::after {
+        display: none;
+    }
+
+    .timeline-details-box {
+        padding: 1.5rem;
+        border-radius: 16px;
+        min-height: auto;
+    }
+
+    .details-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .detail-col h5 { font-size: 0.85rem; }
+    .detail-col p  { font-size: 0.8rem; }
+
+    .active-step-title {
+        position: static;
+        font-size: 1.1rem;
+        margin-top: 1rem;
+    }
+
+    /* ══ CONTACT ═════════════════════════════════════════ */
+    .contact-glass {
+        padding: 3rem 1.5rem;
+    }
+
+    .contact-subtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .contact-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.85rem;
+    }
+
+    .contact-btn {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+        padding: 0.9rem 1.5rem;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* ─── SMALL MOBILE (≤480px) ───────────────────────────── */
+@media (max-width: 480px) {
+
+    .main-header { padding: 0.75rem 1rem; }
+
+    .home-text h1 { font-size: 1.6rem; }
+
+    .home-nav {
+        gap: 1rem 1.5rem;
+    }
+
+    .home-nav .nav-link { font-size: 0.9rem; }
+
+    .home-footer {
+        gap: 0.5rem 1rem;
+        font-size: 0.6rem;
+    }
+
+    .glass-container {
+        padding: 1.25rem 1rem;
+        border-radius: 12px;
+    }
+
+    .work-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem;
+    }
+}
+
+/* ─── VERY SMALL MOBILE (≤360px) ─────────────────────── */
+@media (max-width: 360px) {
+
+    .home-text h1 { font-size: 1.4rem; }
+
+    .home-nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .work-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tall-card {
+        flex: 0 0 calc(100% - 2rem);
+    }
+}
+
+/* ─── LANDSCAPE ORIENTATION (mobile height ≤500px) ────── */
+@media (max-height: 500px) and (orientation: landscape) {
+
+    #home {
+        min-height: auto;
+    }
+
+    .home-content-centered {
+        min-height: auto;
+        padding: 4rem 2rem 3rem;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .profile-container {
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+
+    .large-circle {
+        width: 70px;
+        height: 70px;
+    }
+
+    .home-text h1 { font-size: 1.5rem; }
+
+    .home-nav {
+        flex-wrap: wrap;
+        gap: 0.75rem 1.5rem;
+        margin-top: 1rem;
+    }
+
+    .home-footer {
+        display: none;      /* too crowded in short landscape */
+    }
+}
