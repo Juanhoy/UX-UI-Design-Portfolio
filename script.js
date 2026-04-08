@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // ── Mobile Burger Menu ──────────────────────────────────
     const burgerBtn = document.getElementById('burgerBtn');
     const mobileNavOverlay = document.getElementById('mobileNavOverlay');
@@ -75,20 +75,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 const id = entry.target.getAttribute('id');
                 // Remove active from all links
                 navLinks.forEach(link => link.classList.remove('active'));
-                
+
                 // Add active to current links
                 const currentLinks = document.querySelectorAll(`.nav-link[data-target="${id}"]`);
                 currentLinks.forEach(link => link.classList.add('active'));
 
                 // Handle header visibility changes
                 if (id === 'home') {
-                    if(topNav) topNav.classList.add('hidden');
-                    if(headerProfile) headerProfile.classList.add('hidden');
-                    if(siteType) siteType.classList.remove('hidden');
+                    if (topNav) topNav.classList.add('hidden');
+                    if (headerProfile) headerProfile.classList.add('hidden');
+                    if (siteType) siteType.classList.remove('hidden');
                 } else {
-                    if(topNav) topNav.classList.remove('hidden');
-                    if(headerProfile) headerProfile.classList.remove('hidden');
-                    if(siteType) siteType.classList.add('hidden');
+                    if (topNav) topNav.classList.remove('hidden');
+                    if (headerProfile) headerProfile.classList.remove('hidden');
+                    if (siteType) siteType.classList.add('hidden');
                 }
             }
         });
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Get data step
             const stepKey = item.getAttribute('data-step');
-            
+
             // Set dynamic keys based on step so applyTranslations hits them automatically later
             cols[0].setAttribute('data-i18n', `tl_${stepKey}_methods`);
             cols[1].setAttribute('data-i18n', `tl_${stepKey}_skills`);
@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentLangDisplay = document.getElementById('currentLang');
     const langContainer = document.querySelector('.lang-switcher-container');
     const langDropdown = document.querySelector('.lang-dropdown');
-    
+
     // Toggle dropdown on click
     langContainer.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function initChart(lang) {
         if (!ctx) return;
         const strings = window.translations[lang] || window.translations['ENG'];
-        
+
         const labels = [
             strings['skill_label_ux'],
             strings['skill_label_ui'],
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
             labels: labels,
             datasets: [{
                 label: 'Skill Level',
-                data: [75, 80, 80, 60, 20, 60, 20, 40], // UX is now slightly lower than UI/Graphic
+                data: [75, 80, 80, 50, 40, 60, 30, 40], // UX is now slightly lower than UI/Graphic
                 fill: true,
                 backgroundColor: 'rgba(0, 0, 0, 0.05)',
                 borderColor: '#000000',
@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function applyTranslations(lang) {
         if (!window.translations || !window.translations[lang]) return;
         const strings = window.translations[lang];
-        
+
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (strings[key]) {
@@ -252,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
         new Audio('Chord/sound3.wav'),
         new Audio('Chord/sound4.wav')
     ];
-    
+
     // Preload sounds for better response time
     sounds.forEach(audio => {
         audio.preload = 'auto';
@@ -264,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Map link index (0 to 3) to corresponding sound
             const soundIndex = index % sounds.length;
             const audio = sounds[soundIndex];
-            
+
             // Reset to beginning to allow rapid sequential playing
             audio.currentTime = 0;
             audio.play().catch(e => {
@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const profileSound = new Audio('Chord/chord.wav');
     profileSound.preload = 'auto';
     profileSound.volume = 0.5;
-    
+
     const profileLink = document.querySelector('.home-profile-link');
     if (profileLink) {
         profileLink.addEventListener('mouseenter', () => {
