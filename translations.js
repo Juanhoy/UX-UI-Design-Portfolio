@@ -87,12 +87,7 @@ const translations = {
         'methodologies_title': 'Methodologies',
         'skills_title': 'Skills',
         'software_box_title': 'Software',
-        'tag_user_res': 'User research',
-        'tag_use_cases': 'Use cases and flows',
-        'tag_high_fid': 'High fidelity flow prototypes',
-        'tag_stitch': 'Google Stitch',
-        'tag_gemini': 'Google Gemini',
-        'tag_figma': 'Figma',
+        'click_to_experience': 'Click to experience',
         'ux_strategy': 'UX Strategy & Research:',
         'ui_arch': 'UI Architecture:',
         'proto_front': 'Prototyping & Front-End:',
@@ -130,9 +125,6 @@ const translations = {
         'tl_dev-handover_methods': 'Asset Exporting, Design tokens, Code-compatible layout, Specification Docs.',
         'tl_dev-handover_skills': 'Communication|Basic Frontend|CSS/HTML',
         'tl_dev-handover_soft': 'Zeplin|Figma|GitHub',
-        'tag_foundation': 'Foundation website',
-        'tag_responsive': 'Responsive design',
-        'tag_non_profit': 'Non-profit'
     },
     'ESP': {
         'site_type': 'PORTAFOLIO DE DISEÑO DE PRODUCTO DIGITAL',
@@ -222,12 +214,7 @@ const translations = {
         'methodologies_title': 'Metodologías',
         'skills_title': 'Habilidades',
         'software_box_title': 'Software',
-        'tag_user_res': 'Investigación de usuarios',
-        'tag_use_cases': 'Casos de uso y flujos',
-        'tag_high_fid': 'Prototipos de alta fidelidad',
-        'tag_stitch': 'Google Stitch',
-        'tag_gemini': 'Google Gemini',
-        'tag_figma': 'Figma',
+        'click_to_experience': 'Clic para experimentar',
         'ux_strategy': 'Estrategia UX e Inv:',
         'ui_arch': 'Arquitectura UI:',
         'proto_front': 'Prototipado y Front-End:',
@@ -265,9 +252,6 @@ const translations = {
         'tl_dev-handover_methods': 'Exportación de Assets, Tokens de Diseño, Diseño compatible con código, Documentos de Especificación.',
         'tl_dev-handover_skills': 'Comunicación|Conocimiento Frontend|CSS/HTML',
         'tl_dev-handover_soft': 'Zeplin|Figma|GitHub',
-        'tag_foundation': 'Sitio web de fundación',
-        'tag_responsive': 'Diseño responsive',
-        'tag_non_profit': 'Sin fines de lucro'
     },
     'POR': {
         'site_type': 'PORTFÓLIO DE DESIGN DE PRODUTO DIGITAL',
@@ -357,12 +341,7 @@ const translations = {
         'methodologies_title': 'Metodologías',
         'skills_title': 'Habilidades',
         'software_box_title': 'Software',
-        'tag_user_res': 'Pesquisa de usuários',
-        'tag_use_cases': 'Casos de uso e fluxos',
-        'tag_high_fid': 'Protótipos de alta fidelidade',
-        'tag_stitch': 'Google Stitch',
-        'tag_gemini': 'Google Gemini',
-        'tag_figma': 'Figma',
+        'click_to_experience': 'Clique para experimentar',
         'ux_strategy': 'Estrategia UX e Psq:',
         'ui_arch': 'Arquitetura UI:',
         'proto_front': 'Prototipagem e Front-End:',
@@ -400,9 +379,6 @@ const translations = {
         'tl_dev-handover_methods': 'Exportação de Ativos, Tokens de Design, Layout compatível com código, Documentos de Especificação.',
         'tl_dev-handover_skills': 'Comunicação|Conhecimento Frontend|CSS/HTML',
         'tl_dev-handover_soft': 'Zeplin|Figma|GitHub',
-        'tag_foundation': 'Site da fundação',
-        'tag_responsive': 'Design responsivo',
-        'tag_non_profit': 'Sem fins lucrativos'
     }
 };
 
