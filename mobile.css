@@ -301,16 +301,20 @@ body.menu-open {
     .about-section p { font-size: 0.85rem; line-height: 1.6; }
 
     .work-grid {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr;
-        gap: 1.5rem 2.5rem; /* Increase both vertical and horizontal gap */
+        display: flex !important;
+        flex-direction: column;
+        gap: 1.25rem;
     }
 
-    .work-role   { font-size: 0.82rem; line-height: 1.2; }
-    .work-company,
-    .work-year   { font-size: 0.7rem; }
+    .work-role   { font-size: 0.9rem; font-weight: 500; line-height: 1.3; }
+    .work-company { font-size: 0.82rem; }
+    .work-year   { font-size: 0.78rem; }
 
     .education-block p { font-size: 0.82rem; line-height: 1.5; }
+    .education-block .edu-title  { font-size: 0.9rem; font-weight: 500; }
+    .education-block .edu-degree,
+    .education-block .edu-school,
+    .education-block .edu-year   { font-size: 0.78rem; }
 
     .radar-chart-container {
         height: 280px; /* Increased height */
@@ -511,9 +515,10 @@ body.menu-open {
     .home-text h1 { font-size: 1.5rem; }
     .home-nav .nav-link { font-size: 0.88rem; }
 
-    .work-role   { font-size: 0.68rem; }
+    /* Work experience: keep sizes consistent at small mobile too */
+    .work-role    { font-size: 0.88rem; }
     .work-company,
-    .work-year   { font-size: 0.62rem; }
+    .work-year    { font-size: 0.76rem; }
 
     .tall-card { flex: 0 0 80vw !important; }
 }
