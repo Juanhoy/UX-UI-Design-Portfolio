@@ -626,21 +626,21 @@ p {
 .proj-image-container {
     width: 100%;
     margin-bottom: 1.5rem;
+    will-change: transform;
     transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                box-shadow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                filter  0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .proj-visual {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 16px;
 }
 
-/* Image Elevation Hover Effect — triggers only when hovering the image itself */
+/* Image Elevation Hover Effect — drop-shadow follows the PNG's transparent silhouette */
 .proj-image-container:hover {
     transform: scale(1.02);
-    box-shadow: 0 24px 48px rgba(0,0,0,0.12);
+    filter: drop-shadow(0 20px 32px rgba(0,0,0,0.15));
 }
 
 .proj-action {
