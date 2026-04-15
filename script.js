@@ -1,5 +1,66 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // ── Software Logo Map (for pill rendering in design approach section) ──
+    const softwareLogoMap = {
+        'Notion':          'Softwarelogos/Notion.png',
+        'FigJam':          'Softwarelogos/Figma.png',
+        'Figma':           'Softwarelogos/Figma.png',
+        'Figma Inspect':   'Softwarelogos/Figma.png',
+        'Illustrator':     'Softwarelogos/Illustrator.png',
+        'Photoshop':       'Softwarelogos/Photoshop.png',
+        'Office 365':      'Softwarelogos/Microsoft365.png',
+        'Microsoft 365':   'Softwarelogos/Microsoft365.png',
+        'Google Stitch':   'Softwarelogos/Antigravity.png',
+        'Netlify':         'Softwarelogos/Netlify.png',
+        'GitHub':          'Softwarelogos/github.png',
+        'Affinity':        'Softwarelogos/Afinity.png',
+        'Afinity':         'Softwarelogos/Afinity.png',
+        'Premiere Pro':    'Softwarelogos/PremierePro.png',
+        'Visual Studio Code': 'Softwarelogos/VisualStudioCode.png',
+        'Cursor':          'Softwarelogos/cursor.png',
+        'Zeplin':          null,
+        'Balsamiq':        null,
+        'Miro':            null,
+        'Whimsical':       null,
+        'Evernote':        null,
+        'MS Teams':        null,
+        'Maze':            null,
+        'Useberry':        null,
+        'Google Forms':    null,
+        'Principle':       null,
+    };
+
+    // Pill renderer helpers
+    function renderSkillPills(str) {
+        if (!str) return '';
+        return str.split('|').map(s =>
+            `<span class="pill skill-pill">${s.trim()}</span>`
+        ).join('');
+    }
+
+    function renderSoftPills(str) {
+        if (!str) return '';
+        return str.split('|').map(name => {
+            name = name.trim();
+            const logo = softwareLogoMap[name];
+            if (logo) {
+                return `<span class="pill icon-pill no-proficiency"><span class="circle-icon"><img src="${logo}" class="software-logo"></span>${name}</span>`;
+            }
+            return `<span class="pill">${name}</span>`;
+        }).join('');
+    }
+
+    // Track which timeline step is currently active
+    let currentStep = 'empathy';
+
+    function renderStepDetails(stepKey, lang) {
+        const strings = (window.translations && window.translations[lang]) || window.translations['ENG'];
+        const tSkills = document.getElementById('t_skills');
+        const tSoft   = document.getElementById('t_software');
+        if (tSkills) tSkills.innerHTML = renderSkillPills(strings[`tl_${stepKey}_skills`]);
+        if (tSoft)   tSoft.innerHTML   = renderSoftPills(strings[`tl_${stepKey}_soft`]);
+    }
+
     // ── Mobile Burger Menu ──────────────────────────────────
     const burgerBtn = document.getElementById('burgerBtn');
     const mobileNavOverlay = document.getElementById('mobileNavOverlay');
@@ -127,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Timeline Interaction Logic ---
     const timelineItems = document.querySelectorAll('.timeline-item');
-    const cols = document.querySelectorAll('.detail-col p'); // 0: Methodologies, 1: Skills, 2: Software
+    const tMethods       = document.getElementById('t_methods');
     const stepTitleOuter = document.querySelector('.active-step-title');
 
     timelineItems.forEach(item => {
@@ -144,25 +205,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Get data step
             const stepKey = item.getAttribute('data-step');
+            currentStep = stepKey;
 
-            // Set dynamic keys based on step so applyTranslations hits them automatically later
-            cols[0].setAttribute('data-i18n', `tl_${stepKey}_methods`);
-            cols[1].setAttribute('data-i18n', `tl_${stepKey}_skills`);
-            cols[2].setAttribute('data-i18n', `tl_${stepKey}_soft`);
+            // Update methodologies data-i18n key
+            if (tMethods) tMethods.setAttribute('data-i18n', `tl_${stepKey}_methods`);
+
+            // Build title key
             let titleKey = `step_${stepKey.replace('-', '')}`;
             if (stepKey === 'test-design') titleKey = 'step_test';
             if (stepKey === 'dev-handover') titleKey = 'step_dev';
-            stepTitleOuter.setAttribute('data-i18n', titleKey);
+            if (stepTitleOuter) stepTitleOuter.setAttribute('data-i18n', titleKey);
 
             // Re-apply immediately for the new active item
             const currentLang = document.getElementById('currentLang').textContent;
             if (window.translations && window.translations[currentLang]) {
                 const strings = window.translations[currentLang];
-                cols[0].innerHTML = strings[`tl_${stepKey}_methods`] || '';
-                cols[1].innerHTML = strings[`tl_${stepKey}_skills`] || '';
-                cols[2].innerHTML = strings[`tl_${stepKey}_soft`] || '';
-                stepTitleOuter.innerHTML = strings[titleKey] || '';
+                if (tMethods) tMethods.innerHTML = strings[`tl_${stepKey}_methods`] || '';
+                if (stepTitleOuter) stepTitleOuter.innerHTML = strings[titleKey] || '';
             }
+
+            // Render skill + soft pills for active step
+            renderStepDetails(stepKey, currentLang);
         });
     });
 
@@ -264,6 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial load
     initChart('ENG');
     applyTranslations('ENG');
+    renderStepDetails('empathy', 'ENG');
 
     function applyTranslations(lang) {
         if (!window.translations || !window.translations[lang]) return;
@@ -275,6 +339,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.innerHTML = strings[key];
             }
         });
+
+        // Re-render skill + soft pills for current step
+        renderStepDetails(currentStep, lang);
 
         // Re-init chart with new labels
         initChart(lang);

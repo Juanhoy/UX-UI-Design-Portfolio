@@ -337,7 +337,7 @@ p {
     flex-wrap: wrap;
     gap: 0.5rem;
 }
-.pill {
+.pill, .tag {
     background: var(--pill-bg);
     padding: 0.35rem 0.85rem;
     border-radius: 20px;
@@ -345,11 +345,15 @@ p {
     color: var(--text-main);
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: default;
+    display: inline-block;
 }
-.pill:hover {
+.pill:hover, .tag:hover {
     transform: scale(1.1);
     background: var(--text-main);
     color: #fff;
+}
+.skill-pill {
+    background: var(--dot-color);
 }
 
 /* Work Experience */
@@ -442,6 +446,9 @@ p {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+}
+.icon-pill.no-proficiency {
+    gap: 0.4rem;
 }
 
 /* Proficiency Dots */
@@ -651,10 +658,8 @@ p {
 }
 .proj-tags .tag {
     font-size: 0.65rem;
-    padding: 0.2rem 0.6rem;
-    background: rgba(0,0,0,0.05);
-    border-radius: 4px;
-    color: var(--text-muted);
+    padding: 0.25rem 0.7rem;
+    opacity: 1;
 }
 
 /* How I do it Section */
