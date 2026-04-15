@@ -198,11 +198,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Add active
             item.classList.add('active');
 
-            // Add click pulse animation
-            item.classList.remove('click-pulse');
-            void item.offsetWidth; // trigger reflow
-            item.classList.add('click-pulse');
-
             // Get data step
             const stepKey = item.getAttribute('data-step');
             currentStep = stepKey;
