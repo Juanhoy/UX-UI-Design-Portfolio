@@ -406,8 +406,8 @@ p {
 
 .radar-chart-container {
     width: 100%;
-    height: 320px; /* Increased height from 180px */
-    padding: 2rem;
+    height: 340px;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -441,8 +441,26 @@ p {
 .icon-pill {
     display: flex;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.5rem;
 }
+
+/* Proficiency Dots */
+.proficiency-dots {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+}
+.dot-meter {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #d0d0d0;
+    transition: background 0.3s ease;
+}
+.dot-meter.filled {
+    background: #222;
+}
+
 .circle-icon {
     width: 20px;
     height: 20px;
@@ -658,6 +676,25 @@ p {
 .timeline-item.active, .timeline-item:hover {
     opacity: 1;
 }
+
+/* Click effect on timeline items */
+.timeline-item.active h4 {
+    font-weight: 600;
+}
+.timeline-item.active .dot {
+    transform: scale(1.8);
+    box-shadow: 0 0 0 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+}
+.timeline-item.click-pulse {
+    animation: timelineClickPulse 0.4s ease-out;
+}
+@keyframes timelineClickPulse {
+    0% { transform: scale(1); }
+    40% { transform: scale(0.95); }
+    70% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
 .timeline-item h4 {
     font-size: 1rem;
     margin-bottom: 1rem;
@@ -694,11 +731,15 @@ p {
     position: relative;
     min-height: 200px;
 }
+.active-step-title {
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+}
 .details-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    margin-bottom: 2rem;
 }
 .detail-col h5 {
     font-size: 0.85rem;
@@ -706,16 +747,6 @@ p {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-}
-.detail-col .icon {
-    font-size: 1.1rem;
-}
-.active-step-title {
-    position: absolute;
-    bottom: 2.5rem;
-    left: 2.5rem;
-    font-size: 1.25rem;
-    font-weight: 400;
 }
 
 /* Contact Section */

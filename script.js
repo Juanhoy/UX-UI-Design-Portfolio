@@ -137,6 +137,11 @@ document.addEventListener('DOMContentLoaded', () => {
             // Add active
             item.classList.add('active');
 
+            // Add click pulse animation
+            item.classList.remove('click-pulse');
+            void item.offsetWidth; // trigger reflow
+            item.classList.add('click-pulse');
+
             // Get data step
             const stepKey = item.getAttribute('data-step');
 
@@ -241,8 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 weight: '400' 
                             },
                             color: '#000000',
-                            padding: isMobile ? 5 : 20, // More padding for desktop
-                            centerPointLabels: true
+                            padding: isMobile ? 5 : 20
                         }
                     }
                 },
