@@ -846,3 +846,136 @@ p {
     background: var(--accent-color, #000);
 }
 
+
+/* =======================================================
+   MOBILE RESPONSIVE — Unified Type Scale
+   ======================================================= */
+@media (max-width: 768px) {
+
+    /* Header */
+    .main-header {
+        padding: 1.2rem 1.5rem;
+    }
+    .site-type { display: none; }
+
+    /* Page sections */
+    .page-section {
+        padding: 40px 1.25rem;
+    }
+    .glass-container {
+        padding: 1.5rem 1.25rem;
+        border-radius: 16px;
+    }
+
+    /* ── Unified Body Type Scale ── */
+    /* Section titles (h2) */
+    .section-title {
+        font-size: 1.4rem;
+    }
+    /* Sub-section headers (h3) */
+    .info-grid h3,
+    .core-competencies h3,
+    h3 {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    /* Body / paragraph text */
+    p, .comp-item p {
+        font-size: 0.85rem;
+    }
+
+    /* ── Education ── */
+    .education-block .edu-title {
+        font-size: 0.9rem;
+    }
+    .education-block .edu-degree,
+    .education-block .edu-school,
+    .education-block .edu-year {
+        font-size: 0.8rem;
+    }
+
+    /* ── Work Experience ── */
+    .work-role {
+        font-size: 0.9rem;   /* same visual weight as .edu-title */
+    }
+    .work-company,
+    .work-year {
+        font-size: 0.8rem;   /* same as edu-degree / edu-year */
+    }
+
+    /* ── Pills & labels ── */
+    .pill, .tag {
+        font-size: 0.72rem;
+        padding: 0.3rem 0.7rem;
+    }
+    .detail-col h5 {
+        font-size: 0.8rem;
+    }
+
+    /* ── Grid layouts → single column ── */
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .about-section,
+    .education-column,
+    .skills-section,
+    .work-section,
+    .software-section {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .work-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem 1.5rem;
+    }
+
+    .competency-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    /* ── Projects ── */
+    .projects-carousel {
+        gap: 2rem;
+    }
+    .tall-card {
+        flex: 0 0 240px;
+        min-width: 240px;
+    }
+    .tall-card .proj-title  { font-size: 1rem; }
+    .tall-card .proj-type   { font-size: 0.7rem; }
+
+    /* ── Timeline / Design Approach ── */
+    .timeline-container {
+        flex-direction: column;
+        gap: 0.5rem;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+    }
+    .details-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .active-step-title {
+        font-size: 1.1rem;
+    }
+
+    /* ── Contact ── */
+    .contact-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    .contact-subtitle {
+        font-size: 1rem;
+    }
+
+    /* ── Home ── */
+    .home-text h1   { font-size: 2rem; }
+    .home-text .subtitle { font-size: 0.95rem; }
+    .home-nav { gap: 2rem; }
+    .home-nav .nav-link { font-size: 0.9rem; }
+}
